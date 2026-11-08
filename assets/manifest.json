@@ -1,13 +1,13 @@
 {
  "version": 1,
- "updated": "2026-11-08T22:30:32",
+ "updated": "2026-11-08T22:52:40",
  "root": "_shared/assets",
  "conventions": {
   "coords": "像素；anchor 为 [x,y] 归一化，(0,0)=左上",
   "chars": "角色图为正方形画布，统一朝右（朝左用 scaleX=-1），anchor=[0.5,0.92] 即脚底中心；同一角色所有姿势尺寸相同、脚底对齐；displayScale=0.6 为推荐显示倍率（主角显示约 140px 高，Boss 约 260px）；姿势图含武器，各姿势在画布里的留白不同属正常",
   "fx": "特效为白色/单色透明 PNG，在引擎中用 modulate/color 染色，建议 additive 混合",
   "audio": "每个声音同时提供 .ogg 和 .mp3；Godot 用 ogg，Web/Cocos 任选",
-  "status": "pending=还没好请用占位；ready=已检查可用。路径不会再改"
+  "status": "pending=还没好请用占位；ready=已检查可用；disabled=已停用，不要加载也不要打包（见 reason）。路径不会再改"
  },
  "assets": [
   {
@@ -1115,7 +1115,7 @@
     0.5
    ],
    "use": "大招立绘：主角半身（全彩，透明背景），从屏幕左侧切入",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/ult_banner.png",
@@ -1129,7 +1129,7 @@
     0.5
    ],
    "use": "大招切入时的横幅底（全彩，透明，左浓右淡），上面叠技能名文字",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/joystick_base.png",
@@ -1429,7 +1429,7 @@
    ],
    "use": "标题 Logo「烬刃」",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/home_bg.png",
@@ -1444,7 +1444,7 @@
    ],
    "use": "首页背景图（不透明）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/btn_primary.png",
@@ -1728,20 +1728,6 @@
     "audio/sfx/skill3_throw.mp3"
    ],
    "use": "技能3 流星枪：投掷破风+燃烧",
-   "status": "ready"
-  },
-  {
-   "path": "audio/sfx/ult_voice",
-   "type": "audio",
-   "formats": [
-    "ogg",
-    "mp3"
-   ],
-   "files": [
-    "audio/sfx/ult_voice.ogg",
-    "audio/sfx/ult_voice.mp3"
-   ],
-   "use": "大招语音「烬灭·星陨！」",
    "status": "ready"
   },
   {

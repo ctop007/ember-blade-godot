@@ -7,10 +7,13 @@ src = root.parent / "_shared" / "assets"
 dst = root / "assets"
 dst.mkdir(exist_ok=True)
 m = json.loads((src / "manifest.json").read_text())
-shutil.copy2(src / "manifest.json", dst / "manifest.json")
+# No human voice lines in any build (user requirement): never copy voice assets.
+EXCLUDE = ("audio/sfx/ult_voice",)
+m["assets"] = [i for i in m["assets"] if not i["path"].startswith(EXCLUDE)]
+(dst / "manifest.json").write_text(json.dumps(m, ensure_ascii=False, indent=1))
 n = 0
 for it in m["assets"]:
-    if it.get("status") != "ready":
+    if it.get("status") != "ready" or it["path"].startswith(EXCLUDE):
         continue
     files = [f for f in it.get("files", [it["path"]]) if not f.endswith(".mp3")]
     for f in files:

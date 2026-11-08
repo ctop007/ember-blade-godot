@@ -166,7 +166,7 @@ class DraftCard extends Control:
 		name_l.position = Vector2(0, 168)
 		name_l.size = Vector2(w, 44)
 		var desc := _label(String(data.desc), 21, Color(1.0, 0.92, 0.8), Color(0.08, 0.03, 0.03), 5)
-		desc.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
+		desc.text = UiDraw.wrap_text(String(data.desc), get_theme_default_font(), 21, w - 40)
 		desc.position = Vector2(18, 218)
 		desc.size = Vector2(w - 36, 90)
 		desc.vertical_alignment = VERTICAL_ALIGNMENT_TOP

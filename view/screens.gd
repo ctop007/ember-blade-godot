@@ -250,7 +250,7 @@ static func qr_modal(sfx: Sfx) -> Control:
 	title.position = Vector2(0, 20)
 	p.add_child(title)
 	var note := label("本游戏由 AI 制作。欢迎加群交流 AI 做游戏，或直接联系作者提出修改意见。微信长按二维码即可识别。", 17, Color(1, 0.92, 0.85), 4)
-	note.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
+	note.text = UiDraw.wrap_text(note.text, note.get_theme_default_font(), 17, 616)
 	note.position = Vector2(40, 72)
 	note.size = Vector2(620, 50)
 	p.add_child(note)

@@ -123,6 +123,7 @@ async function mechanics(T, page, tag) {
   s = await T.st(); res.thrust = Math.abs(s.game.px - tx0) > 120;
   await sleep(500);
   // dodge
+  await T.waitFor(x => ['idle', 'run'].includes(x.game.pstate), 3000, 'idle before dodge');
   const dx0 = (await T.st()).game.px; await T.btn('dodge'); await sleep(110); await shot(page, `${tag}-dodge`); await sleep(300);
   s = await T.st(); res.dodge = Math.abs(s.game.px - dx0) > 80;
   await sleep(500);
@@ -132,6 +133,8 @@ async function mechanics(T, page, tag) {
   for (let i = 0; i < 8; i++) { await sleep(40); seen.push((await T.st()).game.pstate); }
   res.slam = seen.includes('slam') || seen.includes('slam_end'); res.slamStates = [...new Set(seen)].join('>');
   await sleep(260); await shot(page, `${tag}-slam`); await sleep(400);
+  // walk toward mid-arena so the camera frames skills fully
+  await stick.dir(1, 0); await sleep(1100); await stick.dir(0, 0);
   // skills via real button taps (mp / cd checked)
   for (const [btn, name, at] of [['skill1', 'crescent', 380], ['skill2', 'skyfall', 560], ['skill3', 'meteorSpear', 260]]) {
     await T.waitFor(x => x.game.mp >= 30 && !(x.game.cds[name] > 0), 15000, name + ' ready');

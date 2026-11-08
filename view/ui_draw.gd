@@ -163,3 +163,25 @@ static func icon(ci: CanvasItem, kind: String, c: Vector2, s: float, col: Color)
 			ci.draw_line(c, c + Vector2(0.35, 0.1) * s, col, s * 0.12, true)
 		_:
 			ci.draw_circle(c, s * 0.5, col)
+
+## Hard-wrap text to a pixel width by measuring glyph runs. Label autowrap does not break
+## Chinese lines in the Web export (no line-break data there), so we insert newlines ourselves.
+static func wrap_text(text: String, font: Font, font_size: int, width: float) -> String:
+	var out := ""
+	var line := ""
+	for ch in text:
+		if ch == "\n":
+			out += line + "\n"
+			line = ""
+			continue
+		var trial := line + ch
+		if line != "" and font.get_string_size(trial, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x > width:
+			# keep closing punctuation on the current line
+			if ch in "，。！？；：、）%":
+				line = trial
+				continue
+			out += line + "\n"
+			line = ch.strip_edges(true, false) if ch == " " else ch
+		else:
+			line = trial
+	return out + line

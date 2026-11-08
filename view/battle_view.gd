@@ -375,7 +375,8 @@ func _ult_cutin(cutin: float) -> void:
 	ls.shadow_size = 6
 	ls.shadow_color = Color(1.0, 0.35, 0.1, 0.6)
 	name_l.label_settings = ls
-	name_l.position = Vector2(vs.x * 0.42 + 200, 22)
+	# right of the portrait figure (figure spans ~66% of portrait width); banner holds at x=-240
+	name_l.position = Vector2(vs.y * 1.3 * 0.66 + vs.x * 0.06 + 240.0, 22)
 	banner.add_child(name_l)
 	var tb := banner.create_tween()
 	tb.tween_property(banner, "position:x", -200.0, 0.18).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
@@ -406,9 +407,6 @@ func _ult_cutin(cutin: float) -> void:
 	tp.tween_property(portrait, "position:x", vs.x * 0.06, cutin - 0.38)
 	tp.tween_property(portrait, "position:x", -portrait.size.x, 0.18).set_ease(Tween.EASE_IN)
 	tp.tween_callback(root.queue_free)
-	var tv := create_tween()
-	tv.tween_interval(0.12)
-	tv.tween_callback(func(): sfx.play("ult_voice", 2.0, 0.0))
 
 class UltBanner extends Control:
 	func _ready() -> void:
