@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-08T21:38:16",
+ "updated": "2026-11-08T22:04:30",
  "root": "_shared/assets",
  "conventions": {
   "coords": "像素；anchor 为 [x,y] 归一化，(0,0)=左上",
@@ -24,7 +24,7 @@
    "use": "远景：夜空、月亮、远山剪影。视差 0.15。可横向平铺",
    "tileX": true,
    "parallax": 0.15,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "bg/mid.png",
@@ -37,11 +37,11 @@
     0,
     0
    ],
-   "use": "中景：余烬森林树干、发光蘑菇、灯火。上半部可透明。视差 0.45。可横向平铺",
+   "use": "中景：余烬森林树干、神社、石灯笼、发光蘑菇。天空部分透明，内容底边在 y≈440（被地面压住）。视差 0.45。以 1280 为周期平铺",
    "tileX": true,
    "parallax": 0.45,
    "transparent": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "bg/ground.png",
@@ -54,11 +54,11 @@
     0,
     0
    ],
-   "use": "地面带：放在 y=360..720，可走区域约 y=470..690。视差 1.0。可横向平铺",
+   "use": "地面带：放在 y=360..720，顶部 48px 渐隐到透明（压在中景上），可走区域约 y=440..690。视差 1.0。可横向平铺",
    "tileX": true,
    "parallax": 1.0,
    "y": 360,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "bg/foreground.png",
@@ -71,12 +71,12 @@
     0,
     0
    ],
-   "use": "前景草丛与枝叶剪影，贴底放置 y=520，画在角色上层。视差 1.25。透明。可横向平铺",
+   "use": "前景草丛剪影，贴底放置 y=520，画在角色上层（内容高约 150px，建议 alpha 0.9）。视差 1.25。透明。以 1280 为周期平铺",
    "tileX": true,
    "parallax": 1.25,
    "y": 520,
    "transparent": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/hero/idle.png",
@@ -314,7 +314,7 @@
    "use": "余烬小鬼（近战） - idle",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/imp/run.png",
@@ -330,7 +330,7 @@
    "use": "余烬小鬼（近战） - run",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/imp/windup.png",
@@ -346,7 +346,7 @@
    "use": "余烬小鬼（近战） - windup",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/imp/attack.png",
@@ -362,7 +362,7 @@
    "use": "余烬小鬼（近战） - attack",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/imp/hurt.png",
@@ -378,7 +378,7 @@
    "use": "余烬小鬼（近战） - hurt",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/imp/dead.png",
@@ -394,7 +394,7 @@
    "use": "余烬小鬼（近战） - dead",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/imp/shadow.png",
@@ -408,7 +408,7 @@
     0.5
    ],
    "use": "余烬小鬼（近战） 脚底影子（黑色半透明椭圆）",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/lantern/idle.png",
@@ -421,10 +421,10 @@
     0.5,
     0.92
    ],
-   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - idle",
+   "use": "投石灯笼怪（远程，漂浮；图中吊签底端在脚底线上，代码可再上浮 20-30px 并做上下浮动） - idle",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/lantern/move.png",
@@ -437,10 +437,10 @@
     0.5,
     0.92
    ],
-   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - move",
+   "use": "投石灯笼怪（远程，漂浮；图中吊签底端在脚底线上，代码可再上浮 20-30px 并做上下浮动） - move",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/lantern/windup.png",
@@ -453,10 +453,10 @@
     0.5,
     0.92
    ],
-   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - windup",
+   "use": "投石灯笼怪（远程，漂浮；图中吊签底端在脚底线上，代码可再上浮 20-30px 并做上下浮动） - windup",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/lantern/throw.png",
@@ -469,10 +469,10 @@
     0.5,
     0.92
    ],
-   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - throw",
+   "use": "投石灯笼怪（远程，漂浮；图中吊签底端在脚底线上，代码可再上浮 20-30px 并做上下浮动） - throw",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/lantern/hurt.png",
@@ -485,10 +485,10 @@
     0.5,
     0.92
    ],
-   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - hurt",
+   "use": "投石灯笼怪（远程，漂浮；图中吊签底端在脚底线上，代码可再上浮 20-30px 并做上下浮动） - hurt",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/lantern/dead.png",
@@ -501,10 +501,10 @@
     0.5,
     0.92
    ],
-   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - dead",
+   "use": "投石灯笼怪（远程，漂浮；图中吊签底端在脚底线上，代码可再上浮 20-30px 并做上下浮动） - dead",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/lantern/shadow.png",
@@ -517,15 +517,15 @@
     0.5,
     0.5
    ],
-   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） 脚底影子（黑色半透明椭圆）",
-   "status": "pending"
+   "use": "投石灯笼怪（远程，漂浮；图中吊签底端在脚底线上，代码可再上浮 20-30px 并做上下浮动） 脚底影子（黑色半透明椭圆）",
+   "status": "ready"
   },
   {
    "path": "chars/brute/idle.png",
    "type": "image",
    "size": [
-    320,
-    320
+    384,
+    384
    ],
    "anchor": [
     0.5,
@@ -534,14 +534,14 @@
    "use": "树皮重甲（冲撞） - idle",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/brute/walk.png",
    "type": "image",
    "size": [
-    320,
-    320
+    384,
+    384
    ],
    "anchor": [
     0.5,
@@ -550,14 +550,14 @@
    "use": "树皮重甲（冲撞） - walk",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/brute/windup.png",
    "type": "image",
    "size": [
-    320,
-    320
+    384,
+    384
    ],
    "anchor": [
     0.5,
@@ -566,14 +566,14 @@
    "use": "树皮重甲（冲撞） - windup",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/brute/charge.png",
    "type": "image",
    "size": [
-    320,
-    320
+    384,
+    384
    ],
    "anchor": [
     0.5,
@@ -582,14 +582,14 @@
    "use": "树皮重甲（冲撞） - charge",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/brute/hurt.png",
    "type": "image",
    "size": [
-    320,
-    320
+    384,
+    384
    ],
    "anchor": [
     0.5,
@@ -598,14 +598,14 @@
    "use": "树皮重甲（冲撞） - hurt",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/brute/dead.png",
    "type": "image",
    "size": [
-    320,
-    320
+    384,
+    384
    ],
    "anchor": [
     0.5,
@@ -614,21 +614,21 @@
    "use": "树皮重甲（冲撞） - dead",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/brute/shadow.png",
    "type": "image",
    "size": [
-    160,
-    40
+    192,
+    48
    ],
    "anchor": [
     0.5,
     0.5
    ],
    "use": "树皮重甲（冲撞） 脚底影子（黑色半透明椭圆）",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/idle.png",
@@ -786,7 +786,7 @@
     0.5
    ],
    "use": "Boss 灰烬骑士（狂暴用代码染色） 脚底影子（黑色半透明椭圆）",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/crescent_arc.png",
@@ -1475,6 +1475,21 @@
    "use": "通用面板底（暂停/结算/加群弹窗，九宫格四边 48px）",
    "nineSlice": true,
    "status": "pending"
+  },
+  {
+   "path": "ui/app-icon.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "应用图标（两个 APK 共用；不透明正方形，四角留安全边距，系统会裁圆角）",
+   "nineSlice": false,
+   "status": "ready"
   },
   {
    "path": "ui/boss_title.png",

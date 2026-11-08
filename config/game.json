@@ -7,7 +7,7 @@
 
   "world": {
     "length": 3840,
-    "groundTop": 470,
+    "groundTop": 440,
     "groundBottom": 690,
     "edgePadding": 40,
     "gravity": 2600,

@@ -198,6 +198,7 @@ func _process(dt: float) -> void:
 		_show_result()
 		if autoplay:
 			print("AUTOPLAY_DONE result=%s time=%.1f kills=%d" % [game.result, game.time, game.kills])
+			get_tree().quit()
 
 func _open_draft() -> void:
 	controls.set_enabled(false)

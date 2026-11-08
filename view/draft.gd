@@ -29,7 +29,6 @@ func open(options: Array, game_cfg: Dictionary, s: Sfx) -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	var vs := get_viewport_rect().size
-	pass
 	dimr = ColorRect.new()
 	dimr.color = Color(0.03, 0.01, 0.04, 0.0)
 	dimr.set_anchors_preset(Control.PRESET_FULL_RECT)

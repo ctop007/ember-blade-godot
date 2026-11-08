@@ -33,6 +33,8 @@ static func _layer(root: Node2D, path: String, which: String, _world_len: float)
 		s.position = Vector2(0, float(e.get("y", 0.0)))
 		var sz := Art.size_of(path, tex.get_size())
 		s.scale = Vector2(sz.x / tex.get_width(), sz.y / tex.get_height())
+		if which == "fore":
+			s.modulate.a = 0.9
 		px.add_child(s)
 	else:
 		var d := BgDraw.new()
