@@ -1,0 +1,1902 @@
+{
+ "version": 1,
+ "updated": "2026-11-08T21:38:16",
+ "root": "_shared/assets",
+ "conventions": {
+  "coords": "像素；anchor 为 [x,y] 归一化，(0,0)=左上",
+  "chars": "角色图为正方形画布，统一朝右（朝左用 scaleX=-1），anchor=[0.5,0.92] 即脚底中心；同一角色所有姿势尺寸相同、脚底对齐；displayScale=0.6 为推荐显示倍率（主角显示约 140px 高，Boss 约 260px）；姿势图含武器，各姿势在画布里的留白不同属正常",
+  "fx": "特效为白色/单色透明 PNG，在引擎中用 modulate/color 染色，建议 additive 混合",
+  "audio": "每个声音同时提供 .ogg 和 .mp3；Godot 用 ogg，Web/Cocos 任选",
+  "status": "pending=还没好请用占位；ready=已检查可用。路径不会再改"
+ },
+ "assets": [
+  {
+   "path": "bg/far.png",
+   "type": "image",
+   "size": [
+    2560,
+    720
+   ],
+   "anchor": [
+    0,
+    0
+   ],
+   "use": "远景：夜空、月亮、远山剪影。视差 0.15。可横向平铺",
+   "tileX": true,
+   "parallax": 0.15,
+   "status": "pending"
+  },
+  {
+   "path": "bg/mid.png",
+   "type": "image",
+   "size": [
+    2560,
+    720
+   ],
+   "anchor": [
+    0,
+    0
+   ],
+   "use": "中景：余烬森林树干、发光蘑菇、灯火。上半部可透明。视差 0.45。可横向平铺",
+   "tileX": true,
+   "parallax": 0.45,
+   "transparent": true,
+   "status": "pending"
+  },
+  {
+   "path": "bg/ground.png",
+   "type": "image",
+   "size": [
+    2560,
+    360
+   ],
+   "anchor": [
+    0,
+    0
+   ],
+   "use": "地面带：放在 y=360..720，可走区域约 y=470..690。视差 1.0。可横向平铺",
+   "tileX": true,
+   "parallax": 1.0,
+   "y": 360,
+   "status": "pending"
+  },
+  {
+   "path": "bg/foreground.png",
+   "type": "image",
+   "size": [
+    2560,
+    200
+   ],
+   "anchor": [
+    0,
+    0
+   ],
+   "use": "前景草丛与枝叶剪影，贴底放置 y=520，画在角色上层。视差 1.25。透明。可横向平铺",
+   "tileX": true,
+   "parallax": 1.25,
+   "y": 520,
+   "transparent": true,
+   "status": "pending"
+  },
+  {
+   "path": "chars/hero/idle.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - idle",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/run.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - run",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/attack1.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - attack1",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/attack2.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - attack2",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/attack3.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - attack3",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/charge.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - charge",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/thrust.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - thrust",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/jump.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - jump",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/slam.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - slam",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/dodge.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - dodge",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/cast.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - cast",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/hurt.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - hurt",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/dead.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "主角 烬刃·灯 - dead",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "ready"
+  },
+  {
+   "path": "chars/hero/shadow.png",
+   "type": "image",
+   "size": [
+    256,
+    64
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "主角 烬刃·灯 脚底影子（黑色半透明椭圆）",
+   "status": "ready"
+  },
+  {
+   "path": "chars/imp/idle.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "余烬小鬼（近战） - idle",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/imp/run.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "余烬小鬼（近战） - run",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/imp/windup.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "余烬小鬼（近战） - windup",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/imp/attack.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "余烬小鬼（近战） - attack",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/imp/hurt.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "余烬小鬼（近战） - hurt",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/imp/dead.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "余烬小鬼（近战） - dead",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/imp/shadow.png",
+   "type": "image",
+   "size": [
+    128,
+    32
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "余烬小鬼（近战） 脚底影子（黑色半透明椭圆）",
+   "status": "pending"
+  },
+  {
+   "path": "chars/lantern/idle.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - idle",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/lantern/move.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - move",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/lantern/windup.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - windup",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/lantern/throw.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - throw",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/lantern/hurt.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - hurt",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/lantern/dead.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） - dead",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/lantern/shadow.png",
+   "type": "image",
+   "size": [
+    128,
+    32
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "投石灯笼怪（远程，漂浮，脚底锚点=投影中心） 脚底影子（黑色半透明椭圆）",
+   "status": "pending"
+  },
+  {
+   "path": "chars/brute/idle.png",
+   "type": "image",
+   "size": [
+    320,
+    320
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "树皮重甲（冲撞） - idle",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/brute/walk.png",
+   "type": "image",
+   "size": [
+    320,
+    320
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "树皮重甲（冲撞） - walk",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/brute/windup.png",
+   "type": "image",
+   "size": [
+    320,
+    320
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "树皮重甲（冲撞） - windup",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/brute/charge.png",
+   "type": "image",
+   "size": [
+    320,
+    320
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "树皮重甲（冲撞） - charge",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/brute/hurt.png",
+   "type": "image",
+   "size": [
+    320,
+    320
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "树皮重甲（冲撞） - hurt",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/brute/dead.png",
+   "type": "image",
+   "size": [
+    320,
+    320
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "树皮重甲（冲撞） - dead",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/brute/shadow.png",
+   "type": "image",
+   "size": [
+    160,
+    40
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "树皮重甲（冲撞） 脚底影子（黑色半透明椭圆）",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/idle.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） - idle",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/walk.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） - walk",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/sweep_windup.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） - sweep_windup",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/sweep.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） - sweep",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/leap.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） - leap",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/slam.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） - slam",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/summon.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） - summon",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/hurt.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） - hurt",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/dead.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.92
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） - dead",
+   "displayScale": 0.6,
+   "facing": "right",
+   "status": "pending"
+  },
+  {
+   "path": "chars/boss/shadow.png",
+   "type": "image",
+   "size": [
+    256,
+    64
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "Boss 灰烬骑士（狂暴用代码染色） 脚底影子（黑色半透明椭圆）",
+   "status": "pending"
+  },
+  {
+   "path": "fx/crescent_arc.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "炎月斩：新月火焰弧（白色，开口朝右，绕中心旋转），建议染橙红",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/fire_ring.png",
+   "type": "image",
+   "size": [
+    512,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "炎月斩：地面光圈（透视椭圆）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/light_pillar.png",
+   "type": "image",
+   "size": [
+    256,
+    1024
+   ],
+   "anchor": [
+    0.5,
+    1.0
+   ],
+   "use": "天穹落光：竖直光柱（锚点底部中心）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/warn_circle.png",
+   "type": "image",
+   "size": [
+    512,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "预警圈（透视椭圆，边缘亮内部淡）：天穹落光/火球落点/Boss 跃击",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/warn_bar.png",
+   "type": "image",
+   "size": [
+    512,
+    64
+   ],
+   "anchor": [
+    0.0,
+    0.5
+   ],
+   "use": "冲撞预警条（左端为起点，向右延伸，可横向拉伸）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/warn_fan.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.0,
+    0.5
+   ],
+   "use": "Boss 横扫扇形预警（扇形开口朝右，锚点在左侧中心）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/shock_ring.png",
+   "type": "image",
+   "size": [
+    512,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "冲击环（透视椭圆环）：落光、下劈、流星落地",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/comet_head.png",
+   "type": "image",
+   "size": [
+    256,
+    128
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "流星枪：彗星头（朝右）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/comet_trail.png",
+   "type": "image",
+   "size": [
+    512,
+    128
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "流星枪/流星：长条拖尾（右端最亮，向左渐隐，可拉伸）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/ember.png",
+   "type": "image",
+   "size": [
+    64,
+    64
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "火星/余烬粒子",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/spark.png",
+   "type": "image",
+   "size": [
+    64,
+    64
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "通用小光点粒子（柔边）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/hit_spark.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "命中火花（放射星形）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/slash_trail.png",
+   "type": "image",
+   "size": [
+    512,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "普攻挥砍弧拖尾（朝右）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/thrust_beam.png",
+   "type": "image",
+   "size": [
+    512,
+    96
+   ],
+   "anchor": [
+    0.0,
+    0.5
+   ],
+   "use": "蓄力穿刺光线（左细右尖，可横向拉伸）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/afterimage.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "残影说明：引擎直接用当前姿势图染色半透明，此文件为备用剪影",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/rock_debris.png",
+   "type": "image",
+   "size": [
+    64,
+    64
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "碎石粒子",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/smoke.png",
+   "type": "image",
+   "size": [
+    128,
+    128
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "烟尘粒子",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/fireball.png",
+   "type": "image",
+   "size": [
+    128,
+    128
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "灯笼怪火球",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/meteor.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "大招：流星（朝右下方 45° 飞行）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/glow.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "通用柔光（径向渐变）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/flash_star.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "四芒闪光（暴击、大招白闪点缀）",
+   "tintable": true,
+   "status": "pending"
+  },
+  {
+   "path": "fx/ult_portrait.png",
+   "type": "image",
+   "size": [
+    1024,
+    1024
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "大招立绘：主角半身（全彩，透明背景），从屏幕左侧切入",
+   "status": "pending"
+  },
+  {
+   "path": "fx/ult_banner.png",
+   "type": "image",
+   "size": [
+    1280,
+    256
+   ],
+   "anchor": [
+    0.0,
+    0.5
+   ],
+   "use": "大招切入时的横幅底（全彩，透明，左浓右淡），上面叠技能名文字",
+   "status": "pending"
+  },
+  {
+   "path": "ui/joystick_base.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "摇杆底盘（直径对应 180px 显示）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/joystick_knob.png",
+   "type": "image",
+   "size": [
+    128,
+    128
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "摇杆摇头",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/btn_attack.png",
+   "type": "image",
+   "size": [
+    256,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "攻击大按钮（含长枪图案）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/btn_jump.png",
+   "type": "image",
+   "size": [
+    160,
+    160
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "跳跃按钮",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/btn_dodge.png",
+   "type": "image",
+   "size": [
+    160,
+    160
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "闪避按钮",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/btn_frame.png",
+   "type": "image",
+   "size": [
+    160,
+    160
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "技能按钮外框（圆形，图标放内部，冷却遮罩由代码画）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/icon_skill1.png",
+   "type": "image",
+   "size": [
+    128,
+    128
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "技能1 炎月斩 图标",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/icon_skill2.png",
+   "type": "image",
+   "size": [
+    128,
+    128
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "技能2 天穹落光 图标",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/icon_skill3.png",
+   "type": "image",
+   "size": [
+    128,
+    128
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "技能3 流星枪 图标",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/icon_ult.png",
+   "type": "image",
+   "size": [
+    192,
+    192
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "大招 烬灭·星陨 图标",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/btn_ult_frame.png",
+   "type": "image",
+   "size": [
+    224,
+    224
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "大招按钮外框（满怒气时代码加发光）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/btn_pause.png",
+   "type": "image",
+   "size": [
+    96,
+    96
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "暂停按钮",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/avatar.png",
+   "type": "image",
+   "size": [
+    160,
+    160
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "左上头像（主角 Q 版头像，圆形）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/bar_frame.png",
+   "type": "image",
+   "size": [
+    512,
+    64
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "HP/MP 条外框（九宫格：左右各 24px 不拉伸）",
+   "nineSlice": true,
+   "status": "pending"
+  },
+  {
+   "path": "ui/bar_fill.png",
+   "type": "image",
+   "size": [
+    512,
+    64
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "条填充（白色，代码染红/蓝，九宫格同上）",
+   "nineSlice": true,
+   "status": "pending"
+  },
+  {
+   "path": "ui/card_common.png",
+   "type": "image",
+   "size": [
+    320,
+    448
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "三选一卡框 普通（蓝灰）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/card_rare.png",
+   "type": "image",
+   "size": [
+    320,
+    448
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "三选一卡框 稀有（紫）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/card_epic.png",
+   "type": "image",
+   "size": [
+    320,
+    448
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "三选一卡框 史诗（金橙）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/card_back.png",
+   "type": "image",
+   "size": [
+    320,
+    448
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "卡背",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/logo.png",
+   "type": "image",
+   "size": [
+    1024,
+    384
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "标题 Logo「烬刃」",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/home_bg.png",
+   "type": "image",
+   "size": [
+    1280,
+    720
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "首页背景图（不透明）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "ui/btn_primary.png",
+   "type": "image",
+   "size": [
+    384,
+    128
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "通用主按钮底（开始/再来一局，九宫格左右 48px）",
+   "nineSlice": true,
+   "status": "pending"
+  },
+  {
+   "path": "ui/panel.png",
+   "type": "image",
+   "size": [
+    512,
+    512
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "通用面板底（暂停/结算/加群弹窗，九宫格四边 48px）",
+   "nineSlice": true,
+   "status": "pending"
+  },
+  {
+   "path": "ui/boss_title.png",
+   "type": "image",
+   "size": [
+    1280,
+    256
+   ],
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "use": "Boss 登场标题卡底（叠「灰烬骑士」文字）",
+   "nineSlice": false,
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/swing1",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/swing1.ogg",
+    "audio/sfx/swing1.mp3"
+   ],
+   "use": "普攻第1段挥砍",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/swing2",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/swing2.ogg",
+    "audio/sfx/swing2.mp3"
+   ],
+   "use": "普攻第2段挥砍",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/swing3",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/swing3.ogg",
+    "audio/sfx/swing3.mp3"
+   ],
+   "use": "普攻第3段穿刺",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/charge_thrust",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/charge_thrust.ogg",
+    "audio/sfx/charge_thrust.mp3"
+   ],
+   "use": "蓄力穿刺突进",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/hit",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/hit.ogg",
+    "audio/sfx/hit.mp3"
+   ],
+   "use": "命中（通用）",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/hit_crit",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/hit_crit.ogg",
+    "audio/sfx/hit_crit.mp3"
+   ],
+   "use": "暴击命中",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/dodge",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/dodge.ogg",
+    "audio/sfx/dodge.mp3"
+   ],
+   "use": "闪避翻滚",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/jump",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/jump.ogg",
+    "audio/sfx/jump.mp3"
+   ],
+   "use": "起跳",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/land_slam",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/land_slam.ogg",
+    "audio/sfx/land_slam.mp3"
+   ],
+   "use": "跳跃下劈落地冲击",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/player_hurt",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/player_hurt.ogg",
+    "audio/sfx/player_hurt.mp3"
+   ],
+   "use": "主角受击",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/enemy_hurt",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/enemy_hurt.ogg",
+    "audio/sfx/enemy_hurt.mp3"
+   ],
+   "use": "敌人受击",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/enemy_die",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/enemy_die.ogg",
+    "audio/sfx/enemy_die.mp3"
+   ],
+   "use": "敌人死亡",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/skill1_crescent",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/skill1_crescent.ogg",
+    "audio/sfx/skill1_crescent.mp3"
+   ],
+   "use": "技能1 炎月斩：火焰呼啸+斩击",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/skill2_charge",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/skill2_charge.ogg",
+    "audio/sfx/skill2_charge.mp3"
+   ],
+   "use": "技能2 天穹落光：蓄能嗡鸣（0.4s）",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/skill2_strike",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/skill2_strike.ogg",
+    "audio/sfx/skill2_strike.mp3"
+   ],
+   "use": "技能2 天穹落光：雷击落地",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/skill3_throw",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/skill3_throw.ogg",
+    "audio/sfx/skill3_throw.mp3"
+   ],
+   "use": "技能3 流星枪：投掷破风+燃烧",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/ult_voice",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/ult_voice.ogg",
+    "audio/sfx/ult_voice.mp3"
+   ],
+   "use": "大招语音「烬灭·星陨！」",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/ult_impact",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/ult_impact.ogg",
+    "audio/sfx/ult_impact.mp3"
+   ],
+   "use": "大招流星爆炸（每颗流星播放一次）",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/ult_start",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/ult_start.ogg",
+    "audio/sfx/ult_start.mp3"
+   ],
+   "use": "大招开场：画面变暗+立绘切入",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/fireball_land",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/fireball_land.ogg",
+    "audio/sfx/fireball_land.mp3"
+   ],
+   "use": "灯笼怪火球落地",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/brute_charge",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/brute_charge.ogg",
+    "audio/sfx/brute_charge.mp3"
+   ],
+   "use": "重甲冲撞",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/boss_appear",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/boss_appear.ogg",
+    "audio/sfx/boss_appear.mp3"
+   ],
+   "use": "Boss 登场",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/boss_slam",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/boss_slam.ogg",
+    "audio/sfx/boss_slam.mp3"
+   ],
+   "use": "Boss 跃击落地/横扫",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/ui_click",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/ui_click.ogg",
+    "audio/sfx/ui_click.mp3"
+   ],
+   "use": "UI 点击",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/card_flip",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/card_flip.ogg",
+    "audio/sfx/card_flip.mp3"
+   ],
+   "use": "三选一翻牌",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/card_rare",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/card_rare.ogg",
+    "audio/sfx/card_rare.mp3"
+   ],
+   "use": "稀有卡揭示",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/victory",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/victory.ogg",
+    "audio/sfx/victory.mp3"
+   ],
+   "use": "胜利",
+   "status": "pending"
+  },
+  {
+   "path": "audio/sfx/defeat",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/sfx/defeat.ogg",
+    "audio/sfx/defeat.mp3"
+   ],
+   "use": "失败",
+   "status": "pending"
+  },
+  {
+   "path": "audio/bgm/battle_loop",
+   "type": "audio",
+   "formats": [
+    "ogg",
+    "mp3"
+   ],
+   "files": [
+    "audio/bgm/battle_loop.ogg",
+    "audio/bgm/battle_loop.mp3"
+   ],
+   "use": "战斗 BGM（无缝循环）",
+   "loop": true,
+   "status": "pending"
+  }
+ ]
+}

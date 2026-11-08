@@ -46,6 +46,7 @@ var god := false
 var result := ""           # "" / "win" / "lose"
 var pending := {}
 var tip := ""
+var draft_return := ""
 
 func _init(config: Dictionary, seed_value: int = -1) -> void:
 	cfg = config
@@ -453,8 +454,9 @@ func _to_advance() -> void:
 	emit("advance", {"tip": tip, "to": a[0]})
 
 # ---------------------------------------------------------------- draft
-func open_draft() -> void:
+func open_draft(resume_wave := false) -> void:
 	draft_options = roll_cards(int(cfg.draft.choices))
+	draft_return = "wave" if resume_wave else ""
 	phase = "draft"
 	emit("draft_open", {"options": draft_options.duplicate()})
 
@@ -494,7 +496,10 @@ func choose_card(id: String) -> bool:
 	apply_card(id)
 	draft_options = []
 	emit("draft_pick", {"id": id})
-	_to_advance()
+	if draft_return == "wave":
+		phase = "wave"   # debug draft opened mid-wave
+	else:
+		_to_advance()
 	return true
 
 func apply_card(id: String) -> void:
