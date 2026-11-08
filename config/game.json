@@ -1,0 +1,193 @@
+{
+  "_doc": "烬刃 demo 共享数值。单位：距离 px（设计分辨率 1280x720 的世界坐标），时间秒，速度 px/s。Godot 与 Cocos 读同一份；改数值两边同步。坐标：x 向右，y 向下为地面纵深（越大越靠前），z 为跳跃高度（向上为正）。",
+  "version": "0.1.0",
+  "seed": 20261108,
+
+  "display": { "width": 1280, "height": 720, "orientation": "landscape" },
+
+  "world": {
+    "length": 3840,
+    "groundTop": 470,
+    "groundBottom": 690,
+    "edgePadding": 40,
+    "gravity": 2600,
+    "cameraLerp": 8.0,
+    "cameraLookAhead": 80,
+    "arenaLockPerWave": true,
+    "arenas": [[0, 1400], [1200, 2600], [2400, 3840], [2400, 3840]],
+    "waveTriggerOffset": 260,
+    "spawnMargin": 60
+  },
+
+  "player": {
+    "name": "烬刃·灯",
+    "maxHp": 300,
+    "maxMp": 100,
+    "mpRegen": 4.0,
+    "moveSpeed": 300,
+    "moveSpeedYScale": 0.7,
+    "attack": 1.0,
+    "critChance": 0.1,
+    "critMul": 1.8,
+    "maxRage": 100,
+    "spawnX": 300,
+    "spawnY": 580,
+    "radius": 26
+  },
+
+  "combat": {
+    "hitFlash": 0.08,
+    "hitstopMin": 0.05,
+    "hitstopMax": 0.08,
+    "hitstopHeavyThreshold": 25,
+    "shakeMax": 4,
+    "shakeDecay": 0.1,
+    "comboTimeout": 2.0,
+    "rageMaxPerHit": 4,
+    "ragePerHitMul": 0.25,
+    "ragePerKill": 3,
+    "enemyHurtStun": 0.25,
+    "playerHurtStun": 0.25,
+    "playerHurtIframe": 0.6,
+    "playerKnockback": 90,
+    "depthTolerance": 46,
+    "damageVariance": 0.1,
+    "maxParticles": 260,
+    "comboShakeAt": 10
+  },
+
+  "attack": {
+    "comboWindow": 0.45,
+    "chainBuffer": 0.2,
+    "chargeTime": 0.35,
+    "moveWhileAttackingScale": 0.2,
+    "steps": [
+      { "name": "挥砍", "damage": 8,  "duration": 0.28, "hitAt": 0.08, "range": 120, "width": 70, "lunge": 12, "knockback": 30 },
+      { "name": "挥砍", "damage": 10, "duration": 0.30, "hitAt": 0.09, "range": 125, "width": 70, "lunge": 14, "knockback": 34 },
+      { "name": "穿刺", "damage": 16, "duration": 0.40, "hitAt": 0.12, "range": 150, "width": 56, "lunge": 40, "knockback": 120 }
+    ],
+    "chargedThrust": { "damage": 30, "distance": 220, "duration": 0.22, "width": 64, "knockback": 80, "recovery": 0.18 }
+  },
+
+  "dodge": { "distance": 160, "duration": 0.3, "iframe": 0.25, "cooldown": 0.6, "afterimages": 4 },
+
+  "jump": {
+    "velocity": 820,
+    "airControl": 0.85,
+    "slamVelocity": 1600,
+    "slamDamage": 18,
+    "slamRadius": 120,
+    "slamKnockback": 70,
+    "landRecovery": 0.12
+  },
+
+  "skills": {
+    "crescent": {
+      "name": "炎月斩", "key": "skill1", "mp": 20, "cooldown": 5.0,
+      "radius": 150, "spins": 2, "spinDuration": 0.35, "damagePerSpin": 20, "knockback": 40,
+      "color": "#ff6a2a"
+    },
+    "skyfall": {
+      "name": "天穹落光", "key": "skill2", "mp": 30, "cooldown": 8.0,
+      "offset": 260, "delay": 0.4, "radius": 110, "damage": 45, "launch": 520, "knockback": 60,
+      "color": "#8fd8ff"
+    },
+    "meteorSpear": {
+      "name": "流星枪", "key": "skill3", "mp": 25, "cooldown": 6.0,
+      "range": 600, "speed": 1500, "width": 50, "damage": 28, "knockback": 50,
+      "splitCount": 3, "splitSpread": 70,
+      "emberInterval": 40, "emberLife": 1.2,
+      "color": "#ffb13a"
+    },
+    "ultimate": {
+      "name": "烬灭·星陨", "key": "ult", "rage": 100,
+      "totalDamage": 120, "strikes": 6, "cutinTime": 0.9, "strikeInterval": 0.16, "strikeRadius": 130,
+      "dimAlpha": 0.6,
+      "color": "#ffd36a"
+    }
+  },
+
+  "enemies": {
+    "imp": {
+      "name": "余烬小鬼", "kind": "melee", "hp": 60, "speed": 135, "radius": 22,
+      "damage": 12, "attackRange": 70, "windup": 0.4, "attackDuration": 0.25, "attackCooldown": 1.4,
+      "knockbackResist": 0.0, "rage": 1, "superArmor": false
+    },
+    "lantern": {
+      "name": "投石灯笼怪", "kind": "ranged", "hp": 45, "speed": 110, "radius": 22,
+      "damage": 16, "preferredRange": 380, "windup": 0.5, "attackCooldown": 2.6,
+      "projectile": { "flightTime": 1.0, "radius": 60, "warnLead": 1.0, "arcHeight": 220 },
+      "knockbackResist": 0.2, "rage": 1, "superArmor": false
+    },
+    "brute": {
+      "name": "树皮重甲", "kind": "charger", "hp": 260, "speed": 70, "radius": 34,
+      "damage": 30, "chargeWindup": 0.6, "chargeSpeed": 700, "chargeDistance": 460, "chargeWidth": 70,
+      "triggerRange": 420, "attackCooldown": 3.0, "recover": 0.6,
+      "knockbackResist": 0.75, "rage": 2, "superArmor": true
+    },
+    "boss": {
+      "name": "灰烬骑士", "kind": "boss", "hp": 1600, "speed": 95, "radius": 48,
+      "knockbackResist": 0.95, "rage": 2, "superArmor": true,
+      "titleCardTime": 2.2,
+      "enrageAt": 0.5, "enrageSpeedMul": 1.4, "enrageCooldownMul": 0.65, "enrageColor": "#ff3b2f",
+      "idleBetween": 1.0,
+      "moves": {
+        "sweep":  { "weight": 4, "range": 220, "angle": 120, "windup": 0.8, "damage": 34, "knockback": 160 },
+        "leap":   { "weight": 3, "windup": 0.5, "airTime": 0.7, "radius": 130, "damage": 40, "knockback": 180 },
+        "summon": { "weight": 2, "windup": 0.9, "count": 3, "type": "imp", "maxAlive": 6 }
+      }
+    }
+  },
+
+  "ai": {
+    "maxMeleeAttackers": 3,
+    "orbitRadius": 230,
+    "orbitSpeed": 0.6,
+    "separation": 52,
+    "thinkInterval": 0.25,
+    "aggroRange": 1400
+  },
+
+  "waves": [
+    { "id": 1, "title": "第 1 波", "tip": "击败所有余烬魔物", "spawns": [ { "type": "imp", "count": 6 } ], "spawnInterval": 0.45 },
+    { "id": 2, "title": "第 2 波", "tip": "小心灯笼怪的火球落点", "spawns": [ { "type": "imp", "count": 8 }, { "type": "lantern", "count": 3 } ], "spawnInterval": 0.4 },
+    { "id": 3, "title": "第 3 波", "tip": "重甲冲撞前会蓄力，及时闪避", "spawns": [ { "type": "imp", "count": 6 }, { "type": "lantern", "count": 3 }, { "type": "brute", "count": 2 } ], "spawnInterval": 0.4 },
+    { "id": 4, "title": "Boss", "tip": "击败灰烬骑士", "boss": true, "spawns": [ { "type": "boss", "count": 1 } ], "spawnInterval": 0 }
+  ],
+  "waveIntermission": 1.2,
+  "draftAfterWaves": [1, 2, 3],
+
+  "draft": {
+    "choices": 3,
+    "maskFade": 0.25,
+    "cardFlyIn": 0.28,
+    "cardStagger": 0.18,
+    "cardFlip": 0.22,
+    "rarePause": 0.35,
+    "rarityWeights": { "common": 60, "rare": 30, "epic": 10 }
+  },
+
+  "cards": [
+    { "id": "crescent_triple", "name": "三重炎月", "rarity": "epic",   "desc": "炎月斩旋转 3 圈", "effect": { "crescentSpins": 1 }, "unique": true },
+    { "id": "spear_split",     "name": "流星分裂", "rarity": "epic",   "desc": "流星枪分裂为 3 支", "effect": { "spearSplit": true }, "unique": true },
+    { "id": "dodge_flame",     "name": "焰步",     "rarity": "rare",   "desc": "闪避留下火焰轨迹，每 0.25 秒造成 6 伤害", "effect": { "dodgeFlame": true }, "unique": true },
+    { "id": "skyfall_wide",    "name": "天穹扩散", "rarity": "rare",   "desc": "天穹落光范围 +40%，伤害 +30%", "effect": { "skyfallRadiusMul": 0.4, "skyfallDamageMul": 0.3 } },
+    { "id": "atk_up",          "name": "炽刃",     "rarity": "common", "desc": "攻击力 +15%", "effect": { "attackMul": 0.15 } },
+    { "id": "crit_up",         "name": "星眸",     "rarity": "common", "desc": "暴击率 +10%", "effect": { "critChance": 0.1 } },
+    { "id": "hp_up",           "name": "余烬之心", "rarity": "common", "desc": "最大生命 +60，并回复 60", "effect": { "maxHp": 60, "heal": 60 } },
+    { "id": "mp_regen",        "name": "星泉",     "rarity": "common", "desc": "法力回复 +50%", "effect": { "mpRegenMul": 0.5 } },
+    { "id": "lifesteal",       "name": "噬焰",     "rarity": "rare",   "desc": "每次击杀回复 8 生命", "effect": { "killHeal": 8 } },
+    { "id": "dodge_crit",      "name": "残影一闪", "rarity": "rare",   "desc": "闪避后的下一击必定暴击", "effect": { "dodgeCrit": true }, "unique": true },
+    { "id": "rage_up",         "name": "怒焰",     "rarity": "common", "desc": "怒气获取 +40%", "effect": { "rageMul": 0.4 } },
+    { "id": "cdr",             "name": "疾风",     "rarity": "epic",   "desc": "全部技能冷却 -25%", "effect": { "cooldownMul": -0.25 } }
+  ],
+
+  "dodgeFlame": { "tick": 0.25, "damage": 6, "life": 1.6, "radius": 40, "spacing": 36 },
+
+  "ui": {
+    "joystickRadius": 90,
+    "joystickDeadzone": 0.15,
+    "comboBigAt": 10,
+    "versionLabel": "v0.1.0 试玩版"
+  }
+}

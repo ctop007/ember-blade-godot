@@ -1,0 +1,37 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+
+config/name="烬刃 Demo (Godot)"
+config/version="0.1.0"
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.7")
+boot_splash/bg_color=Color(0.05, 0.04, 0.07, 1)
+boot_splash/show_image=false
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=0
+
+[input_devices]
+
+pointing/emulate_mouse_from_touch=true
+pointing/emulate_touch_from_mouse=true
+
+[gui]
+
+theme/custom_font="res://fonts/ui_font.ttf"
+common/drop_mouse_on_gui_input_disabled=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.05, 0.04, 0.07, 1)
+2d/snap/snap_2d_transforms_to_pixel=false

@@ -1,0 +1,6 @@
+.godot/
+build/
+node_modules/
+tools/shots/
+*.tmp
+.DS_Store
