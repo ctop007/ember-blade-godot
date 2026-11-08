@@ -163,7 +163,11 @@ func _draw() -> void:
 	var tag := Rect2(cx - 70, oy, 140, 30)
 	UiDraw.game_panel(self, tag, 12, Color(0.25, 0.1, 0.08, 0.85), Color(0.85, 0.55, 0.3), false)
 	_text(Vector2(cx, oy + 22), title + ("" if game.phase != "wave" else "  剩余 %d" % _remaining()), 18, Color(1.0, 0.9, 0.7), 1, 4)
-	if game.tip != "":
+	var boss_up := false
+	for e in game.enemies:
+		if e.type == "boss" and e.state != "dead":
+			boss_up = true
+	if game.tip != "" and not (boss_up and game.phase != "boss_intro"):
 		_text(Vector2(cx, oy + 60), game.tip, 22, Color(1.0, 0.95, 0.8), 1, 6)
 	# advance arrow
 	if game.phase == "advance" and game.tip.begins_with("向右"):

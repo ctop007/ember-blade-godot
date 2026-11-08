@@ -441,13 +441,18 @@ func _st_ult(dt: float) -> void:
 
 # ---------------------------------------------------------------- hurt
 func take_hit(dmg: float, from_x: float, src: String) -> bool:
-	if p.state == "dead" or g.god or p.iframe > 0.0 or p.state in ["dodge", "ult", "thrust"]:
+	if p.state == "dead" or g.god or p.iframe > 0.0 or p.state in ["dodge", "thrust"]:
 		if p.state == "dodge":
 			g.emit("dodge_perfect", {"x": p.x, "y": p.y})
 		return false
 	p.hp = maxf(0.0, p.hp - dmg)
+	# super armor while casting skills / ult (same rule as Cocos): take damage, never interrupted
+	var armor: bool = p.state in ["cast", "ult"]
 	p.flash = float(c.combat.hitFlash)
 	p.iframe = float(c.combat.playerHurtIframe)
+	if armor and p.hp > 0.0:
+		g.emit("player_hit", {"dmg": dmg, "x": p.x, "y": p.y, "src": src, "armor": true})
+		return true
 	var dir := 1.0 if p.x >= from_x else -1.0
 	p.kb_x = dir * float(c.combat.playerKnockback) * 6.0
 	p.holding = false

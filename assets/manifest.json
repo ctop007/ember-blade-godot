@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-08T22:21:17",
+ "updated": "2026-11-08T22:30:32",
  "root": "_shared/assets",
  "conventions": {
   "coords": "像素；anchor 为 [x,y] 归一化，(0,0)=左上",
@@ -1518,7 +1518,7 @@
     "audio/sfx/swing1.mp3"
    ],
    "use": "普攻第1段挥砍",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/swing2",
@@ -1532,7 +1532,7 @@
     "audio/sfx/swing2.mp3"
    ],
    "use": "普攻第2段挥砍",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/swing3",
@@ -1546,7 +1546,7 @@
     "audio/sfx/swing3.mp3"
    ],
    "use": "普攻第3段穿刺",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/charge_thrust",
@@ -1560,7 +1560,7 @@
     "audio/sfx/charge_thrust.mp3"
    ],
    "use": "蓄力穿刺突进",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/hit",
@@ -1574,7 +1574,7 @@
     "audio/sfx/hit.mp3"
    ],
    "use": "命中（通用）",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/hit_crit",
@@ -1588,7 +1588,7 @@
     "audio/sfx/hit_crit.mp3"
    ],
    "use": "暴击命中",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/dodge",
@@ -1602,7 +1602,7 @@
     "audio/sfx/dodge.mp3"
    ],
    "use": "闪避翻滚",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/jump",
@@ -1616,7 +1616,7 @@
     "audio/sfx/jump.mp3"
    ],
    "use": "起跳",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/land_slam",
@@ -1630,7 +1630,7 @@
     "audio/sfx/land_slam.mp3"
    ],
    "use": "跳跃下劈落地冲击",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/player_hurt",
@@ -1644,7 +1644,7 @@
     "audio/sfx/player_hurt.mp3"
    ],
    "use": "主角受击",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/enemy_hurt",
@@ -1658,7 +1658,7 @@
     "audio/sfx/enemy_hurt.mp3"
    ],
    "use": "敌人受击",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/enemy_die",
@@ -1672,7 +1672,7 @@
     "audio/sfx/enemy_die.mp3"
    ],
    "use": "敌人死亡",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/skill1_crescent",
@@ -1686,7 +1686,7 @@
     "audio/sfx/skill1_crescent.mp3"
    ],
    "use": "技能1 炎月斩：火焰呼啸+斩击",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/skill2_charge",
@@ -1700,7 +1700,7 @@
     "audio/sfx/skill2_charge.mp3"
    ],
    "use": "技能2 天穹落光：蓄能嗡鸣（0.4s）",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/skill2_strike",
@@ -1714,7 +1714,7 @@
     "audio/sfx/skill2_strike.mp3"
    ],
    "use": "技能2 天穹落光：雷击落地",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/skill3_throw",
@@ -1728,7 +1728,7 @@
     "audio/sfx/skill3_throw.mp3"
    ],
    "use": "技能3 流星枪：投掷破风+燃烧",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/ult_voice",
@@ -1742,7 +1742,7 @@
     "audio/sfx/ult_voice.mp3"
    ],
    "use": "大招语音「烬灭·星陨！」",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/ult_impact",
@@ -1756,7 +1756,7 @@
     "audio/sfx/ult_impact.mp3"
    ],
    "use": "大招流星爆炸（每颗流星播放一次）",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/ult_start",
@@ -1770,7 +1770,7 @@
     "audio/sfx/ult_start.mp3"
    ],
    "use": "大招开场：画面变暗+立绘切入",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/fireball_land",
@@ -1784,7 +1784,7 @@
     "audio/sfx/fireball_land.mp3"
    ],
    "use": "灯笼怪火球落地",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/brute_charge",
@@ -1798,7 +1798,7 @@
     "audio/sfx/brute_charge.mp3"
    ],
    "use": "重甲冲撞",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/boss_appear",
@@ -1812,7 +1812,7 @@
     "audio/sfx/boss_appear.mp3"
    ],
    "use": "Boss 登场",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/boss_slam",
@@ -1826,7 +1826,7 @@
     "audio/sfx/boss_slam.mp3"
    ],
    "use": "Boss 跃击落地/横扫",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/ui_click",
@@ -1840,7 +1840,7 @@
     "audio/sfx/ui_click.mp3"
    ],
    "use": "UI 点击",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/card_flip",
@@ -1854,7 +1854,7 @@
     "audio/sfx/card_flip.mp3"
    ],
    "use": "三选一翻牌",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/card_rare",
@@ -1868,7 +1868,7 @@
     "audio/sfx/card_rare.mp3"
    ],
    "use": "稀有卡揭示",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/victory",
@@ -1882,7 +1882,7 @@
     "audio/sfx/victory.mp3"
    ],
    "use": "胜利",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/defeat",
@@ -1896,7 +1896,7 @@
     "audio/sfx/defeat.mp3"
    ],
    "use": "失败",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/bgm/battle_loop",
@@ -1911,7 +1911,7 @@
    ],
    "use": "战斗 BGM（无缝循环）",
    "loop": true,
-   "status": "pending"
+   "status": "ready"
   }
  ]
 }

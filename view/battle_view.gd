@@ -222,6 +222,7 @@ func _on_event(ev: Dictionary) -> void:
 			fx.dust(Vector2(ev.x, ev.y), 3)
 		"land":
 			hero.kick(2.0, -2.5)
+			sfx.play("land_slam", -12.0, 0.05, 0.03, 1.35)  # light landing: same sample, quieter + higher
 			fx.dust(Vector2(ev.x, ev.y), 4)
 		"slam_start":
 			hero.kick(-1.0, 2.0)

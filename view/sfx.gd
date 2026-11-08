@@ -75,7 +75,7 @@ func prepare_bgm() -> void:
 	else:
 		streams["bgm"] = _synth_bgm()
 
-func play(name: String, vol_db := 0.0, pitch_var := 0.06, min_gap := 0.03) -> void:
+func play(name: String, vol_db := 0.0, pitch_var := 0.06, min_gap := 0.03, pitch := 1.0) -> void:
 	if muted:
 		return
 	if not streams.has(name):
@@ -91,7 +91,7 @@ func play(name: String, vol_db := 0.0, pitch_var := 0.06, min_gap := 0.03) -> vo
 	next_player = (next_player + 1) % players.size()
 	pl.stream = streams[name]
 	pl.volume_db = vol_db
-	pl.pitch_scale = 1.0 + randf_range(-pitch_var, pitch_var)
+	pl.pitch_scale = pitch + randf_range(-pitch_var, pitch_var)
 	pl.play()
 
 func play_bgm() -> void:

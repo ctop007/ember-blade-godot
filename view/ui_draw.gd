@@ -16,7 +16,12 @@ static func rrect_points(r: Rect2, rad: float, seg: int = 5) -> PackedVector2Arr
 		var a0: float = cc[1]
 		for i in seg + 1:
 			var a: float = a0 + PI * 0.5 * float(i) / float(seg)
-			pts.append(c + Vector2(cos(a), sin(a)) * rad)
+			var q := c + Vector2(cos(a), sin(a)) * rad
+			# skip coincident points (rad == half side) - they break polygon triangulation
+			if pts.is_empty() or pts[pts.size() - 1].distance_squared_to(q) > 0.01:
+				pts.append(q)
+	if pts.size() > 2 and pts[0].distance_squared_to(pts[pts.size() - 1]) <= 0.01:
+		pts.remove_at(pts.size() - 1)
 	return pts
 
 static func grad_rrect(ci: CanvasItem, r: Rect2, rad: float, top: Color, bot: Color) -> void:

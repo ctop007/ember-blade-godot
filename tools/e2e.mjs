@@ -128,7 +128,9 @@ async function mechanics(T, page, tag) {
   await sleep(500);
   // jump + air attack slam
   await T.btn('jump'); await sleep(180); s = await T.st(); res.jump = s.game.pstate === 'jump';
-  await T.btn('attack'); await sleep(140); s = await T.st(); res.slam = ['slam', 'idle', 'run'].includes(s.game.pstate);
+  await T.btn('attack'); const seen = [];
+  for (let i = 0; i < 8; i++) { await sleep(40); seen.push((await T.st()).game.pstate); }
+  res.slam = seen.includes('slam') || seen.includes('slam_end'); res.slamStates = [...new Set(seen)].join('>');
   await sleep(260); await shot(page, `${tag}-slam`); await sleep(400);
   // skills via real button taps (mp / cd checked)
   for (const [btn, name, at] of [['skill1', 'crescent', 380], ['skill2', 'skyfall', 560], ['skill3', 'meteorSpear', 260]]) {
@@ -193,6 +195,8 @@ async function fullRun(T, page, tag, budgetMs = 420000) {
         await shot(page, `${tag}-draft${r.drafts + 1}`);
         const c = s.cards[r.drafts % 3]; await T.tap(c[0], c[1]); r.drafts++;
         await T.waitFor(x => !x.cards, 3000, 'draft closed'); await sleep(200);
+        // controls drop all fingers while the modal is up; lift and re-press the stick like a player would
+        await stick.release(); await stick.hold(await T.st());
       }
       continue;
     }
@@ -220,7 +224,8 @@ async function fullRun(T, page, tag, budgetMs = 420000) {
   if (s) {
     r.stats = { kills: s.game.kills, maxCombo: s.game.maxCombo, dmg: Math.round(s.game.totalDamage), hp: s.game.hp };
     await sleep(800); await shot(page, `${tag}-result`);
-    await T.tap(s.againBtn[0], s.againBtn[1]);
+    const sa = await T.st();   // re-read: panel scales in, coords captured mid-tween are stale
+    await T.tap(sa.againBtn[0], sa.againBtn[1]);
     const s3 = await T.waitFor(x => x && x.screen === 'battle' && x.game && x.game.wave === 1 && x.game.hp === x.game.maxHp, 8000, 'replay').catch(() => null);
     r.replay = !!s3;
   }

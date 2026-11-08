@@ -299,7 +299,7 @@ func _bridge_poll(dt: float) -> void:
 		st["startBtn"] = [sb.position.x + sb.size.x * 0.5, sb.position.y + sb.size.y * 0.5]
 	if pause_node and is_instance_valid(pause_node) and screen == "result":
 		var again: Control = pause_node.get_child(1).get_node("Again")
-		st["againBtn"] = [again.global_position.x + again.size.x * 0.5, again.global_position.y + again.size.y * 0.5]
+		st["againBtn"] = [again.get_global_transform() * (again.size * 0.5)].map(func(v: Vector2) -> Array: return [v.x, v.y])[0]
 	JavaScriptBridge.eval("window.__jr.state = " + JSON.stringify(st) + ";")
 
 func _fps() -> float:
