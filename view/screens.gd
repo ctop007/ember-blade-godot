@@ -86,7 +86,7 @@ class Backdrop extends Control:
 		t += dt
 		queue_redraw()
 	func _draw() -> void:
-		var vs := size
+		var vs := get_viewport_rect().size
 		var tex := Art.real("ui/home_bg.png")
 		if tex != null:
 			var s := maxf(vs.x / tex.get_width(), vs.y / tex.get_height())
@@ -120,7 +120,7 @@ class Loading extends Control:
 	func _process(_dt: float) -> void:
 		queue_redraw()
 	func _draw() -> void:
-		var vs := size
+		var vs := get_viewport_rect().size
 		draw_rect(Rect2(Vector2.ZERO, vs), Color(0.05, 0.03, 0.06))
 		var font := get_theme_default_font()
 		var title := "烬刃"

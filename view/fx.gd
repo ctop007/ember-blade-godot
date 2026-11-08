@@ -314,7 +314,7 @@ func skyfall_strike(ev: Dictionary) -> void:
 		var s := spr(top, "fx/light_pillar.png", pos, Color(C_SKY, 0.85) if layer == 0 else Color(1, 1, 1, 0.95), Vector2.ONE)
 		s.centered = false
 		s.offset = Vector2(-s.texture.get_width() * 0.5, -s.texture.get_height())
-		var wpx := r * (1.5 if layer == 0 else 0.55)
+		var wpx := r * (1.5 if layer == 0 else 0.55) * 1.75  # real pillar core is thin (asset note: scaleX 1.5-2)
 		var full := fit(s, wpx, h)
 		s.scale = Vector2(full.x * 0.5, 0.0)
 		s.position = Vector2(pos.x, top_y)
@@ -378,7 +378,7 @@ func spear_end(pos: Vector2) -> void:
 # ------------------------------------------------------------------ ultimate meteors
 func meteor(target: Vector2, delay: float) -> void:
 	var start := target + Vector2(-260, -620)
-	var m := spr(top, "fx/meteor.png", start, Color(1.0, 0.75, 0.4), Vector2.ONE)
+	var m := spr(top, "fx/meteor.png", start, Color(1.0, 0.75, 0.4), Vector2.ONE, false)  # greyscale shading: normal blend
 	m.scale = fit(m, 150, 150)
 	m.rotation = (target - start).angle() - PI * 0.25
 	m.visible = false

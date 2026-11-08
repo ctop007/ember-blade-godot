@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-08T22:04:30",
+ "updated": "2026-11-08T22:21:17",
  "root": "_shared/assets",
  "conventions": {
   "coords": "像素；anchor 为 [x,y] 归一化，(0,0)=左上",
@@ -634,8 +634,8 @@
    "path": "chars/boss/idle.png",
    "type": "image",
    "size": [
-    512,
-    512
+    640,
+    640
    ],
    "anchor": [
     0.5,
@@ -644,14 +644,14 @@
    "use": "Boss 灰烬骑士（狂暴用代码染色） - idle",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/walk.png",
    "type": "image",
    "size": [
-    512,
-    512
+    640,
+    640
    ],
    "anchor": [
     0.5,
@@ -660,14 +660,14 @@
    "use": "Boss 灰烬骑士（狂暴用代码染色） - walk",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/sweep_windup.png",
    "type": "image",
    "size": [
-    512,
-    512
+    640,
+    640
    ],
    "anchor": [
     0.5,
@@ -676,14 +676,14 @@
    "use": "Boss 灰烬骑士（狂暴用代码染色） - sweep_windup",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/sweep.png",
    "type": "image",
    "size": [
-    512,
-    512
+    640,
+    640
    ],
    "anchor": [
     0.5,
@@ -692,14 +692,14 @@
    "use": "Boss 灰烬骑士（狂暴用代码染色） - sweep",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/leap.png",
    "type": "image",
    "size": [
-    512,
-    512
+    640,
+    640
    ],
    "anchor": [
     0.5,
@@ -708,14 +708,14 @@
    "use": "Boss 灰烬骑士（狂暴用代码染色） - leap",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/slam.png",
    "type": "image",
    "size": [
-    512,
-    512
+    640,
+    640
    ],
    "anchor": [
     0.5,
@@ -724,14 +724,14 @@
    "use": "Boss 灰烬骑士（狂暴用代码染色） - slam",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/summon.png",
    "type": "image",
    "size": [
-    512,
-    512
+    640,
+    640
    ],
    "anchor": [
     0.5,
@@ -740,14 +740,14 @@
    "use": "Boss 灰烬骑士（狂暴用代码染色） - summon",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/hurt.png",
    "type": "image",
    "size": [
-    512,
-    512
+    640,
+    640
    ],
    "anchor": [
     0.5,
@@ -756,14 +756,14 @@
    "use": "Boss 灰烬骑士（狂暴用代码染色） - hurt",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/dead.png",
    "type": "image",
    "size": [
-    512,
-    512
+    640,
+    640
    ],
    "anchor": [
     0.5,
@@ -772,14 +772,14 @@
    "use": "Boss 灰烬骑士（狂暴用代码染色） - dead",
    "displayScale": 0.6,
    "facing": "right",
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "chars/boss/shadow.png",
    "type": "image",
    "size": [
-    256,
-    64
+    320,
+    80
    ],
    "anchor": [
     0.5,
@@ -801,7 +801,7 @@
    ],
    "use": "炎月斩：新月火焰弧（白色，开口朝右，绕中心旋转），建议染橙红",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/fire_ring.png",
@@ -816,7 +816,7 @@
    ],
    "use": "炎月斩：地面光圈（透视椭圆）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/light_pillar.png",
@@ -829,9 +829,9 @@
     0.5,
     1.0
    ],
-   "use": "天穹落光：竖直光柱（锚点底部中心）",
+   "use": "天穹落光：竖直光柱（锚点底部中心；核心较细，建议 scaleX 1.5–2 并叠 glow）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/warn_circle.png",
@@ -846,7 +846,7 @@
    ],
    "use": "预警圈（透视椭圆，边缘亮内部淡）：天穹落光/火球落点/Boss 跃击",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/warn_bar.png",
@@ -861,7 +861,7 @@
    ],
    "use": "冲撞预警条（左端为起点，向右延伸，可横向拉伸）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/warn_fan.png",
@@ -876,7 +876,7 @@
    ],
    "use": "Boss 横扫扇形预警（扇形开口朝右，锚点在左侧中心）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/shock_ring.png",
@@ -891,7 +891,7 @@
    ],
    "use": "冲击环（透视椭圆环）：落光、下劈、流星落地",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/comet_head.png",
@@ -906,7 +906,7 @@
    ],
    "use": "流星枪：彗星头（朝右）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/comet_trail.png",
@@ -921,7 +921,7 @@
    ],
    "use": "流星枪/流星：长条拖尾（右端最亮，向左渐隐，可拉伸）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/ember.png",
@@ -936,7 +936,7 @@
    ],
    "use": "火星/余烬粒子",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/spark.png",
@@ -951,7 +951,7 @@
    ],
    "use": "通用小光点粒子（柔边）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/hit_spark.png",
@@ -966,7 +966,7 @@
    ],
    "use": "命中火花（放射星形）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/slash_trail.png",
@@ -981,7 +981,7 @@
    ],
    "use": "普攻挥砍弧拖尾（朝右）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/thrust_beam.png",
@@ -996,7 +996,7 @@
    ],
    "use": "蓄力穿刺光线（左细右尖，可横向拉伸）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/afterimage.png",
@@ -1011,7 +1011,7 @@
    ],
    "use": "残影说明：引擎直接用当前姿势图染色半透明，此文件为备用剪影",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/rock_debris.png",
@@ -1026,7 +1026,7 @@
    ],
    "use": "碎石粒子",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/smoke.png",
@@ -1041,7 +1041,7 @@
    ],
    "use": "烟尘粒子",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/fireball.png",
@@ -1056,7 +1056,7 @@
    ],
    "use": "灯笼怪火球",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/meteor.png",
@@ -1071,7 +1071,7 @@
    ],
    "use": "大招：流星（朝右下方 45° 飞行）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/glow.png",
@@ -1086,7 +1086,7 @@
    ],
    "use": "通用柔光（径向渐变）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/flash_star.png",
@@ -1101,7 +1101,7 @@
    ],
    "use": "四芒闪光（暴击、大招白闪点缀）",
    "tintable": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "fx/ult_portrait.png",

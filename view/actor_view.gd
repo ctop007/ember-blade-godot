@@ -3,7 +3,7 @@ extends Node2D
 ## One character on screen. Node origin = foot position on ground (y-sorted).
 ## Uses chars/<kind>/<pose>.png when imported, else code-drawn placeholder (BodyPH).
 
-const HEIGHT := {"hero": 140.0, "imp": 86.0, "lantern": 104.0, "brute": 140.0, "boss": 220.0}
+const HEIGHT := {"hero": 140.0, "imp": 86.0, "lantern": 104.0, "brute": 140.0, "boss": 258.0}
 const SHADOW_W := {"hero": 70.0, "imp": 56.0, "lantern": 50.0, "brute": 92.0, "boss": 140.0}
 const POSE_MAP := {
 	"hero": {"idle": "idle", "run": "run", "charge": "charge", "thrust": "thrust", "thrust_end": "thrust",

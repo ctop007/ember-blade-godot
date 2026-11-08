@@ -107,7 +107,7 @@ func _bar(r: Rect2, k: float, lag: float, c1: Color, c2: Color) -> void:
 func _draw() -> void:
 	if game == null:
 		return
-	var vs := size
+	var vs := get_viewport_rect().size
 	var p = game.player
 	var ox := insets.x + 8.0
 	var oy := insets.y + 8.0

@@ -132,7 +132,7 @@
       "enrageAt": 0.5, "enrageSpeedMul": 1.4, "enrageCooldownMul": 0.65, "enrageColor": "#ff3b2f",
       "idleBetween": 1.0,
       "moves": {
-        "sweep":  { "weight": 4, "range": 220, "angle": 120, "windup": 0.8, "damage": 34, "knockback": 160 },
+        "sweep":  { "weight": 4, "range": 200, "angle": 120, "windup": 0.8, "damage": 34, "knockback": 160 },
         "leap":   { "weight": 3, "windup": 0.5, "airTime": 0.7, "radius": 130, "damage": 40, "knockback": 180 },
         "summon": { "weight": 2, "windup": 0.9, "count": 3, "type": "imp", "maxAlive": 6 }
       }
