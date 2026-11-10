@@ -1,5 +1,7 @@
 # ENGINE_NOTES：Godot 4.7.2 版
 
+给改代码、对性能和查导出问题的人。想先玩一局，请看 [README](README.md)。
+
 ## 运行方式
 
 - 构建：`python3 tools/sync_assets.py && godot --headless --path . --import && npm run build`
