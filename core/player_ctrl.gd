@@ -23,7 +23,7 @@ func update(dt: float, inp: Dictionary) -> void:
 	if p.state == "dead":
 		return
 	_track_hold(dt, inp)
-	_handle_actions(inp)
+	_handle_actions(dt, inp)
 	match p.state:
 		"idle", "run":
 			_locomotion(dt, inp, 1.0)
@@ -76,26 +76,57 @@ func _track_hold(dt: float, inp: Dictionary) -> void:
 func _grounded_state() -> bool:
 	return p.state in ["idle", "run", "attack", "charge"]
 
-func _handle_actions(inp: Dictionary) -> void:
-	if inp.get("ult_pressed", false):
-		try_ult()
-	if inp.get("dodge_pressed", false):
-		try_dodge(inp)
-	if inp.get("jump_pressed", false) and p.state in ["idle", "run", "attack", "charge"]:
-		p.state = "jump"
-		p.state_t = 0.0
-		p.vz = float(c.jump.velocity)
-		p.air_attacked = false
-		p.holding = false
-		p.charged = false
-		g.emit("jump", {"x": p.x, "y": p.y})
-	for i in 3:
-		if inp.get("skill%d_pressed" % (i + 1), false):
-			try_skill(["crescent", "skyfall", "meteorSpear"][i])
-	if inp.get("attack_pressed", false):
-		_on_attack_pressed(inp)
+const BUF_ORDER := ["ult", "dodge", "jump", "skill1", "skill2", "skill3", "attack"]
+const SKILL_KEYS := {"skill1": "crescent", "skill2": "skyfall", "skill3": "meteorSpear"}
 
-func _on_attack_pressed(inp: Dictionary) -> void:
+## Input buffer (feel.inputBuffer): a press is kept for a short time and executed on the first frame
+## the action becomes possible. A press that is rejected for a real reason (no mp / cd / rage) is consumed.
+func _handle_actions(dt: float, inp: Dictionary) -> void:
+	var bt := float(c.feel.inputBuffer)
+	for k in BUF_ORDER:
+		if inp.get(k + "_pressed", false):
+			p.buf[k] = bt
+	for k in BUF_ORDER:
+		if not p.buf.has(k):
+			continue
+		var done := false
+		match k:
+			"ult":
+				done = try_ult() != 0
+			"dodge":
+				done = try_dodge(inp)
+			"jump":
+				done = _try_jump()
+			"attack":
+				done = _on_attack_pressed(inp)
+			_:
+				done = try_skill(SKILL_KEYS[k]) != 0
+		if done:
+			p.buf.erase(k)
+	for k in p.buf.keys():
+		p.buf[k] = float(p.buf[k]) - dt
+		if p.buf[k] <= 0.0:
+			p.buf.erase(k)
+
+## Attack recovery can be cancelled (next step / jump / skill) after feel.attackCancelAt[step].
+func _attack_cancelable() -> bool:
+	return p.state == "attack" and p.hit_done and p.state_t >= float(c.feel.attackCancelAt[p.combo_step])
+
+func _try_jump() -> bool:
+	if not (p.state in ["idle", "run", "charge"] or _attack_cancelable()):
+		return false
+	p.state = "jump"
+	p.state_t = 0.0
+	p.vz = float(c.jump.velocity)
+	p.air_attacked = false
+	p.holding = false
+	p.charged = false
+	p.buffered = false
+	g.emit("jump", {"x": p.x, "y": p.y})
+	return true
+
+## Returns true when the press was used (or merged into the combo buffer); false keeps it buffered.
+func _on_attack_pressed(inp: Dictionary) -> bool:
 	if p.state == "jump":
 		if not p.air_attacked:
 			p.air_attacked = true
@@ -103,16 +134,22 @@ func _on_attack_pressed(inp: Dictionary) -> void:
 			p.state_t = 0.0
 			p.vz = -float(c.jump.slamVelocity)
 			g.emit("slam_start", {"x": p.x, "y": p.y, "z": p.z})
-		return
+		return true
 	if p.state in ["idle", "run"]:
 		p.holding = true
 		p.hold_t = 0.0
 		var nxt: int = (p.combo_step + 1) % 3 if p.chain_t > 0.0 else 0
 		_start_attack(nxt, inp)
-	elif p.state == "attack":
-		p.buffered = true
+		return true
+	if p.state == "attack":
 		p.holding = true
 		p.hold_t = 0.0
+		if _attack_cancelable():
+			_start_attack((p.combo_step + 1) % 3, inp)
+		else:
+			p.buffered = true
+		return true
+	return false
 
 func _start_attack(step: int, inp: Dictionary) -> void:
 	_auto_face(inp)
@@ -181,19 +218,20 @@ func _clamp() -> void:
 func _st_attack(dt: float, inp: Dictionary) -> void:
 	var st: Dictionary = c.attack.steps[p.combo_step]
 	var dur: float = p.state_dur
-	var lunge_t := dur * 0.4
-	if p.state_t <= lunge_t:
-		p.x += p.facing * float(st.lunge) / lunge_t * dt
+	# lunge: displacement curve, fast then slow (feel.lungeEase over feel.lungeFrac of the swing)
+	var lunge_t := dur * float(c.feel.lungeFrac)
+	p.x += p.facing * float(st.lunge) * Ease.delta(String(c.feel.lungeEase), (p.state_t - dt) / lunge_t, p.state_t / lunge_t)
 	_locomotion(dt, inp, float(c.attack.moveWhileAttackingScale), false)
 	if not p.hit_done and p.state_t >= float(st.hitAt):
 		p.hit_done = true
 		var targets: Array = g.enemies_in_box(p.x, p.y, p.facing, float(st.range), float(st.width))
 		for e in targets:
 			g.damage_enemy(e, float(st.damage), {"src": "atk%d" % (p.combo_step + 1), "knockback": float(st.knockback)})
+	if p.buffered and _attack_cancelable():
+		_start_attack((p.combo_step + 1) % 3, inp)
+		return
 	if p.state_t >= dur:
-		if p.buffered:
-			_start_attack((p.combo_step + 1) % 3, inp)
-		elif p.holding:
+		if p.holding:
 			p.state = "charge"
 			p.state_t = 0.0
 			p.chain_t = float(c.attack.comboWindow)
@@ -216,8 +254,8 @@ func _start_thrust() -> void:
 
 func _st_thrust(dt: float) -> void:
 	var t: Dictionary = c.attack.chargedThrust
-	var spd := float(t.distance) / float(t.duration)
-	p.x += p.facing * spd * dt
+	var td := float(t.duration)
+	p.x += p.facing * float(t.distance) * Ease.delta(String(c.feel.thrustEase), (p.state_t - dt) / td, p.state_t / td)
 	_clamp()
 	var lo := minf(p.thrust_from, p.x) - 30.0
 	var hi := maxf(p.thrust_from, p.x) + 30.0
@@ -314,17 +352,18 @@ func _st_slam(dt: float) -> void:
 		p.state_dur = float(j.landRecovery)
 
 # ---------------------------------------------------------------- skills
-func try_skill(name: String, force := false) -> bool:
+## 1 = cast, 0 = busy (keep buffered), -1 = rejected (no mp / on cooldown).
+func try_skill(name: String, force := false) -> int:
 	var s: Dictionary = c.skills[name]
 	if not force:
-		if not (p.state in ["idle", "run", "attack", "charge", "thrust_end", "slam_end"]):
-			return false
+		if not (p.state in ["idle", "run", "charge", "thrust_end", "slam_end"] or _attack_cancelable()):
+			return 0
 		if float(p.cds[name]) > 0.0:
 			g.emit("skill_fail", {"skill": name, "why": "cd"})
-			return false
+			return -1
 		if p.mp < float(s.mp):
 			g.emit("skill_fail", {"skill": name, "why": "mp"})
-			return false
+			return -1
 		p.mp -= float(s.mp)
 	p.cds[name] = float(s.cooldown) * g.cd_mul()
 	p.holding = false
@@ -352,7 +391,7 @@ func try_skill(name: String, force := false) -> bool:
 		"meteorSpear":
 			p.state_dur = 0.3
 			g.emit("spear_cast", {"x": p.x, "y": p.y, "facing": p.facing})
-	return true
+	return 1
 
 func _st_cast(dt: float, inp: Dictionary) -> void:
 	var name: String = p.cast_skill
@@ -391,13 +430,14 @@ func _throw_spears() -> void:
 	g.emit("spear_throw", {"x": p.x, "y": p.y, "facing": p.facing, "n": dirs.size()})
 
 # ---------------------------------------------------------------- ultimate
-func try_ult(force := false) -> bool:
+## 1 = cast, 0 = busy (keep buffered), -1 = rejected (rage not full).
+func try_ult(force := false) -> int:
 	var u: Dictionary = c.skills.ultimate
 	if p.state in ["dead", "ult"] or g.freeze > 0.0:
-		return false
+		return 0
 	if not force and p.rage < float(u.rage):
 		g.emit("skill_fail", {"skill": "ultimate", "why": "rage"})
-		return false
+		return -1
 	p.rage = 0.0
 	p.state = "ult"
 	p.state_t = 0.0
@@ -410,7 +450,7 @@ func try_ult(force := false) -> bool:
 	p.cast_data = {"n": 0}
 	g.freeze = p.state_dur
 	g.emit("ult_start", {"x": p.x, "y": p.y, "dur": p.state_dur, "cutin": float(u.cutinTime)})
-	return true
+	return 1
 
 func _st_ult(dt: float) -> void:
 	p.state_t += dt

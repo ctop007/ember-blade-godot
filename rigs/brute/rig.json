@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "unitsPerPixel": 1,
+  "displayScale": 0.6,
+  "bones": [
+    {
+      "name": "root",
+      "parent": null,
+      "x": 0,
+      "y": 0,
+      "rot": 0
+    },
+    {
+      "name": "hip",
+      "parent": "root",
+      "x": 13,
+      "y": -112,
+      "rot": 0
+    },
+    {
+      "name": "chest",
+      "parent": "hip",
+      "x": 0,
+      "y": 0,
+      "rot": 0
+    },
+    {
+      "name": "head",
+      "parent": "chest",
+      "x": 39,
+      "y": -46,
+      "rot": 0
+    },
+    {
+      "name": "branch",
+      "parent": "head",
+      "x": -22,
+      "y": -58,
+      "rot": 0,
+      "length": 38
+    },
+    {
+      "name": "branch_tip",
+      "parent": "branch",
+      "x": -32,
+      "y": -24,
+      "rot": 0,
+      "length": 24
+    },
+    {
+      "name": "armL",
+      "parent": "chest",
+      "x": -37,
+      "y": -36,
+      "rot": 0
+    },
+    {
+      "name": "armR",
+      "parent": "chest",
+      "x": 59,
+      "y": -18,
+      "rot": 0
+    },
+    {
+      "name": "legL",
+      "parent": "hip",
+      "x": -49,
+      "y": 16,
+      "rot": 0
+    },
+    {
+      "name": "legR",
+      "parent": "hip",
+      "x": 23,
+      "y": 14,
+      "rot": 0
+    }
+  ],
+  "slots": [
+    {
+      "name": "armR",
+      "bone": "armR",
+      "image": "parts/armR.png",
+      "pivot": [
+        0.27381,
+        0.22131
+      ],
+      "z": 1
+    },
+    {
+      "name": "legL",
+      "bone": "legL",
+      "image": "parts/legL.png",
+      "pivot": [
+        0.6413,
+        0.15517
+      ],
+      "z": 2
+    },
+    {
+      "name": "legR",
+      "bone": "legR",
+      "image": "parts/legR.png",
+      "pivot": [
+        0.35294,
+        0.15652
+      ],
+      "z": 3
+    },
+    {
+      "name": "torso",
+      "bone": "chest",
+      "image": "parts/torso.png",
+      "pivot": [
+        0.56934,
+        0.67273
+      ],
+      "z": 4
+    },
+    {
+      "name": "branch",
+      "bone": "branch",
+      "image": "parts/branch.png",
+      "pivot": [
+        0.74648,
+        0.76471
+      ],
+      "z": 5
+    },
+    {
+      "name": "head",
+      "bone": "head",
+      "image": "parts/head.png",
+      "pivot": [
+        0.375,
+        0.68254
+      ],
+      "z": 6
+    },
+    {
+      "name": "armL",
+      "bone": "armL",
+      "image": "parts/armL.png",
+      "pivot": [
+        0.54198,
+        0.16547
+      ],
+      "z": 7
+    }
+  ],
+  "springs": [
+    {
+      "bones": [
+        "branch",
+        "branch_tip"
+      ],
+      "stiffness": 95,
+      "damping": 11,
+      "gravity": 8
+    }
+  ],
+  "sockets": {
+    "chargeFront": {
+      "bone": "head",
+      "x": 48,
+      "y": 10
+    }
+  }
+}

@@ -20,7 +20,8 @@ class Player:
 	# attack
 	var combo_step := 0      # 0..2 current/last step
 	var chain_t := 0.0       # time left to chain into next step after attack end
-	var buffered := false    # attack pressed during attack
+	var buffered := false    # attack pressed during attack (fires at feel.attackCancelAt)
+	var buf := {}            # input buffer: action -> seconds left (feel.inputBuffer)
 	var hit_done := false
 	var holding := false
 	var hold_t := 0.0

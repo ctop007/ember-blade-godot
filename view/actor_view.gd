@@ -212,7 +212,7 @@ func make_ghost(col: Color) -> Node2D:
 	g.global_position = body.global_position
 	g.scale = scaler.scale
 	g.rotation = rot.rotation * signf(scaler.scale.x)
-	if sprite.visible:
+	if sprite.texture != null:
 		var s := Sprite2D.new()
 		s.texture = sprite.texture
 		s.centered = false

@@ -1,0 +1,1409 @@
+{
+  "idle": {
+    "duration": 2.4,
+    "loop": true,
+    "phases": {
+      "windup": 0,
+      "active": 0,
+      "recovery": 2.4
+    },
+    "bones": {
+      "hip": [
+        {
+          "t": 0,
+          "y": 0
+        },
+        {
+          "t": 1.2,
+          "y": 4,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 2.4,
+          "y": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "chest": [
+        {
+          "t": 0,
+          "sy": 1
+        },
+        {
+          "t": 1.2,
+          "sy": 1.02,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 2.4,
+          "sy": 1,
+          "ease": "sineInOut"
+        }
+      ],
+      "head": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 1.2,
+          "rot": 2,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 2.4,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 1.2,
+          "rot": -3,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 2.4,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "cape1": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 1.2,
+          "rot": 4,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 2.4,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "cape2": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 1.2,
+          "rot": 7,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 2.4,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {},
+    "events": []
+  },
+  "walk": {
+    "duration": 1.0,
+    "loop": true,
+    "phases": {
+      "windup": 0,
+      "active": 0,
+      "recovery": 1.0
+    },
+    "bones": {
+      "hip": [
+        {
+          "t": 0,
+          "y": 0,
+          "rot": 2
+        },
+        {
+          "t": 0.25,
+          "y": -5,
+          "rot": 4,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "y": 4,
+          "rot": 2,
+          "ease": "quadIn"
+        },
+        {
+          "t": 0.75,
+          "y": -5,
+          "rot": 4,
+          "ease": "quadOut"
+        },
+        {
+          "t": 1.0,
+          "y": 0,
+          "rot": 2,
+          "ease": "quadIn"
+        }
+      ],
+      "legL": [
+        {
+          "t": 0,
+          "rot": 16
+        },
+        {
+          "t": 0.5,
+          "rot": -16,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.0,
+          "rot": 16,
+          "ease": "sineInOut"
+        }
+      ],
+      "legR": [
+        {
+          "t": 0,
+          "rot": -16
+        },
+        {
+          "t": 0.5,
+          "rot": 16,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.0,
+          "rot": -16,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": -8
+        },
+        {
+          "t": 0.5,
+          "rot": 10,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.0,
+          "rot": -8,
+          "ease": "sineInOut"
+        }
+      ],
+      "armR": [
+        {
+          "t": 0,
+          "rot": 10
+        },
+        {
+          "t": 0.5,
+          "rot": -8,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.0,
+          "rot": 10,
+          "ease": "sineInOut"
+        }
+      ],
+      "head": [
+        {
+          "t": 0,
+          "rot": 2
+        },
+        {
+          "t": 0.5,
+          "rot": -1,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.0,
+          "rot": 2,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {},
+    "events": [
+      {
+        "t": 0.5,
+        "name": "boss_step"
+      },
+      {
+        "t": 1.0,
+        "name": "boss_step"
+      }
+    ]
+  },
+  "sweep_windup": {
+    "duration": 0.8,
+    "loop": false,
+    "phases": {
+      "windup": 0.8,
+      "active": 0.8,
+      "recovery": 0.8
+    },
+    "bones": {
+      "hip": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.55,
+          "x": -12,
+          "y": 6,
+          "rot": -8,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.8,
+          "x": -14,
+          "y": 8,
+          "rot": -10,
+          "ease": "sineInOut"
+        }
+      ],
+      "chest": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.55,
+          "rot": -5,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.8,
+          "rot": -6
+        }
+      ],
+      "head": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.55,
+          "rot": -8,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.8,
+          "rot": -10
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": 0,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "t": 0.55,
+          "rot": -68,
+          "x": -10,
+          "y": -12,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.8,
+          "rot": -76,
+          "x": -12,
+          "y": -14
+        }
+      ],
+      "sword": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.55,
+          "rot": -28,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.8,
+          "rot": -34
+        }
+      ],
+      "armR": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.8,
+          "rot": -22,
+          "ease": "quadOut"
+        }
+      ],
+      "legL": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.8,
+          "rot": 10,
+          "ease": "quadOut"
+        }
+      ],
+      "legR": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.8,
+          "rot": -8,
+          "ease": "quadOut"
+        }
+      ]
+    },
+    "slots": {},
+    "events": [
+      {
+        "t": 0.1,
+        "name": "sweep_telegraph"
+      }
+    ]
+  },
+  "sweep": {
+    "duration": 0.52,
+    "loop": false,
+    "phases": {
+      "windup": 0.06,
+      "active": 0.12,
+      "recovery": 0.52
+    },
+    "bones": {
+      "hip": [
+        {
+          "t": 0,
+          "x": -14,
+          "y": 8,
+          "rot": -10
+        },
+        {
+          "t": 0.06,
+          "x": -16,
+          "y": 9,
+          "rot": -12,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.12,
+          "x": 20,
+          "y": 4,
+          "rot": 12,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.24,
+          "x": 20,
+          "y": 4,
+          "rot": 12
+        },
+        {
+          "t": 0.52,
+          "x": 0,
+          "y": 0,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "chest": [
+        {
+          "t": 0,
+          "rot": -6
+        },
+        {
+          "t": 0.12,
+          "rot": 8,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.24,
+          "rot": 8
+        },
+        {
+          "t": 0.52,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "head": [
+        {
+          "t": 0,
+          "rot": -10
+        },
+        {
+          "t": 0.12,
+          "rot": 10,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.24,
+          "rot": 10
+        },
+        {
+          "t": 0.52,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": -76,
+          "x": -12,
+          "y": -14
+        },
+        {
+          "t": 0.06,
+          "rot": -82,
+          "x": -14,
+          "y": -16,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.12,
+          "rot": 38,
+          "x": 16,
+          "y": 6,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.24,
+          "rot": 38,
+          "x": 16,
+          "y": 6
+        },
+        {
+          "t": 0.52,
+          "rot": 0,
+          "x": 0,
+          "y": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "sword": [
+        {
+          "t": 0,
+          "rot": -34
+        },
+        {
+          "t": 0.06,
+          "rot": -38,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.12,
+          "rot": 16,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.24,
+          "rot": 16
+        },
+        {
+          "t": 0.52,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "legL": [
+        {
+          "t": 0,
+          "rot": 10
+        },
+        {
+          "t": 0.12,
+          "rot": -12,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.52,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "legR": [
+        {
+          "t": 0,
+          "rot": -8
+        },
+        {
+          "t": 0.12,
+          "rot": 10,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.52,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {
+      "sword": [
+        {
+          "t": 0,
+          "image": "parts/sword.png"
+        },
+        {
+          "t": 0.1,
+          "image": "parts/sword_smear.png"
+        },
+        {
+          "t": 0.16,
+          "image": "parts/sword.png"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.06,
+        "name": "trail_on"
+      },
+      {
+        "t": 0.12,
+        "name": "hit"
+      },
+      {
+        "t": 0.22,
+        "name": "trail_off"
+      }
+    ]
+  },
+  "leap": {
+    "duration": 0.7,
+    "loop": false,
+    "phases": {
+      "windup": 0.14,
+      "active": 0.35,
+      "recovery": 0.7
+    },
+    "bones": {
+      "root": [
+        {
+          "t": 0,
+          "y": 0
+        },
+        {
+          "t": 0.14,
+          "y": 10,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.42,
+          "y": -88,
+          "ease": "cubicOut"
+        },
+        {
+          "t": 0.7,
+          "y": -70,
+          "ease": "quadIn"
+        }
+      ],
+      "hip": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.14,
+          "rot": 8,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.42,
+          "rot": -8,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.7,
+          "rot": 6,
+          "ease": "quadIn"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.14,
+          "rot": 20,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.42,
+          "rot": -82,
+          "y": -14,
+          "ease": "cubicOut"
+        },
+        {
+          "t": 0.7,
+          "rot": -88,
+          "y": -16
+        }
+      ],
+      "sword": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.42,
+          "rot": -25,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.7,
+          "rot": -30
+        }
+      ],
+      "legL": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.14,
+          "rot": 12
+        },
+        {
+          "t": 0.42,
+          "rot": -14,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.7,
+          "rot": -10
+        }
+      ],
+      "legR": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.14,
+          "rot": -12
+        },
+        {
+          "t": 0.42,
+          "rot": 14,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.7,
+          "rot": 10
+        }
+      ]
+    },
+    "slots": {},
+    "events": [
+      {
+        "t": 0.14,
+        "name": "leap_takeoff"
+      }
+    ]
+  },
+  "land": {
+    "duration": 0.48,
+    "loop": false,
+    "phases": {
+      "windup": 0.06,
+      "active": 0.08,
+      "recovery": 0.48
+    },
+    "bones": {
+      "root": [
+        {
+          "t": 0,
+          "y": -70
+        },
+        {
+          "t": 0.08,
+          "y": 0,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.48,
+          "y": 0
+        }
+      ],
+      "hip": [
+        {
+          "t": 0,
+          "y": 0,
+          "rot": 6
+        },
+        {
+          "t": 0.08,
+          "y": 16,
+          "rot": 12,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.22,
+          "y": 14,
+          "rot": 10
+        },
+        {
+          "t": 0.48,
+          "y": 0,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": -88,
+          "y": -16
+        },
+        {
+          "t": 0.08,
+          "rot": 28,
+          "y": 10,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.22,
+          "rot": 28,
+          "y": 10
+        },
+        {
+          "t": 0.48,
+          "rot": 0,
+          "y": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "sword": [
+        {
+          "t": 0,
+          "rot": -30
+        },
+        {
+          "t": 0.08,
+          "rot": 14,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.22,
+          "rot": 14
+        },
+        {
+          "t": 0.48,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "legL": [
+        {
+          "t": 0,
+          "rot": -10
+        },
+        {
+          "t": 0.08,
+          "rot": 14,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.48,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "legR": [
+        {
+          "t": 0,
+          "rot": 10
+        },
+        {
+          "t": 0.08,
+          "rot": -14,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.48,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {
+      "sword": [
+        {
+          "t": 0,
+          "image": "parts/sword.png"
+        },
+        {
+          "t": 0.06,
+          "image": "parts/sword_smear.png"
+        },
+        {
+          "t": 0.12,
+          "image": "parts/sword.png"
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.08,
+        "name": "hit"
+      },
+      {
+        "t": 0.08,
+        "name": "slam_shockwave"
+      }
+    ]
+  },
+  "summon": {
+    "duration": 0.9,
+    "loop": false,
+    "phases": {
+      "windup": 0.35,
+      "active": 0.55,
+      "recovery": 0.9
+    },
+    "bones": {
+      "hip": [
+        {
+          "t": 0,
+          "y": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.35,
+          "y": -8,
+          "rot": -8,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.55,
+          "y": 6,
+          "rot": 6,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.9,
+          "y": 0,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "head": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.35,
+          "rot": -16,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.55,
+          "rot": 8,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.9,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": 0,
+          "y": 0
+        },
+        {
+          "t": 0.35,
+          "rot": -92,
+          "y": -18,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.55,
+          "rot": -86,
+          "y": -14,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.9,
+          "rot": 0,
+          "y": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "sword": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.35,
+          "rot": -38,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.55,
+          "rot": -34
+        },
+        {
+          "t": 0.9,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armR": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.35,
+          "rot": -45,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.55,
+          "rot": 25,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.9,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {},
+    "events": [
+      {
+        "t": 0.55,
+        "name": "summon_imps"
+      }
+    ]
+  },
+  "enrage": {
+    "duration": 1.0,
+    "loop": false,
+    "phases": {
+      "windup": 0.3,
+      "active": 0.5,
+      "recovery": 1.0
+    },
+    "bones": {
+      "hip": [
+        {
+          "t": 0,
+          "y": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.3,
+          "y": 18,
+          "rot": 12,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "y": -10,
+          "rot": -14,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.78,
+          "y": -8,
+          "rot": -12
+        },
+        {
+          "t": 1.0,
+          "y": 0,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "chest": [
+        {
+          "t": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        {
+          "t": 0.3,
+          "sx": 0.95,
+          "sy": 0.94,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "sx": 1.08,
+          "sy": 1.08,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.78,
+          "sx": 1.05,
+          "sy": 1.05
+        },
+        {
+          "t": 1.0,
+          "sx": 1,
+          "sy": 1,
+          "ease": "sineInOut"
+        }
+      ],
+      "head": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.3,
+          "rot": 14,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "rot": -20,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.78,
+          "rot": -18
+        },
+        {
+          "t": 1.0,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.3,
+          "rot": 24,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "rot": -68,
+          "y": -12,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.78,
+          "rot": -62,
+          "y": -10
+        },
+        {
+          "t": 1.0,
+          "rot": 0,
+          "y": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armR": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.3,
+          "rot": 20,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "rot": -52,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.78,
+          "rot": -48
+        },
+        {
+          "t": 1.0,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {},
+    "events": [
+      {
+        "t": 0.5,
+        "name": "enrage_roar"
+      }
+    ]
+  },
+  "hurt": {
+    "duration": 0.26,
+    "loop": false,
+    "phases": {
+      "windup": 0.04,
+      "active": 0.04,
+      "recovery": 0.26
+    },
+    "bones": {
+      "hip": [
+        {
+          "t": 0,
+          "x": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.04,
+          "x": -12,
+          "rot": -9,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.12,
+          "x": -8,
+          "rot": -6
+        },
+        {
+          "t": 0.26,
+          "x": 0,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "head": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.04,
+          "rot": -12,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.26,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.04,
+          "rot": 12,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.26,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {},
+    "events": [
+      {
+        "t": 0,
+        "name": "flash",
+        "arg": 0.08
+      }
+    ]
+  },
+  "dead": {
+    "duration": 1.1,
+    "loop": false,
+    "phases": {
+      "windup": 0.22,
+      "active": 0.68,
+      "recovery": 1.1
+    },
+    "bones": {
+      "hip": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.25,
+          "x": -12,
+          "y": 22,
+          "rot": 14,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.45,
+          "x": -14,
+          "y": 26,
+          "rot": 16
+        },
+        {
+          "t": 0.75,
+          "x": -48,
+          "y": 92,
+          "rot": -82,
+          "ease": "quadIn"
+        },
+        {
+          "t": 0.88,
+          "x": -52,
+          "y": 84,
+          "rot": -86,
+          "ease": "quadOut"
+        },
+        {
+          "t": 1.1,
+          "x": -52,
+          "y": 92,
+          "rot": -84,
+          "ease": "sineInOut"
+        }
+      ],
+      "head": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.25,
+          "rot": 18,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.75,
+          "rot": -18,
+          "ease": "quadIn"
+        },
+        {
+          "t": 1.1,
+          "rot": -14
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.25,
+          "rot": 22,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.75,
+          "rot": 42,
+          "ease": "quadIn"
+        },
+        {
+          "t": 1.1,
+          "rot": 46
+        }
+      ],
+      "sword": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.75,
+          "rot": 18,
+          "ease": "quadIn"
+        },
+        {
+          "t": 1.1,
+          "rot": 22
+        }
+      ],
+      "legL": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.25,
+          "rot": 24,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.75,
+          "rot": -16,
+          "ease": "quadIn"
+        },
+        {
+          "t": 1.1,
+          "rot": -12
+        }
+      ],
+      "legR": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.25,
+          "rot": -22,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.75,
+          "rot": 20,
+          "ease": "quadIn"
+        },
+        {
+          "t": 1.1,
+          "rot": 16
+        }
+      ]
+    },
+    "slots": {
+      "plume": [
+        {
+          "t": 0,
+          "alpha": 1
+        },
+        {
+          "t": 0.6,
+          "alpha": 0.2
+        },
+        {
+          "t": 1.1,
+          "alpha": 0
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.75,
+        "name": "boss_collapse"
+      }
+    ]
+  }
+}

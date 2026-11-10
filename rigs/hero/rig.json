@@ -1,0 +1,514 @@
+{
+  "version": 1,
+  "unitsPerPixel": 1,
+  "displayScale": 0.6,
+  "bones": [
+    {
+      "name": "root",
+      "parent": null,
+      "x": 0,
+      "y": 0,
+      "rot": 0
+    },
+    {
+      "name": "hip",
+      "parent": "root",
+      "x": 0,
+      "y": -91,
+      "rot": 0
+    },
+    {
+      "name": "chest",
+      "parent": "hip",
+      "x": 0,
+      "y": -2,
+      "rot": 0
+    },
+    {
+      "name": "breath",
+      "parent": "chest",
+      "x": 0,
+      "y": 0,
+      "rot": 0
+    },
+    {
+      "name": "head",
+      "parent": "chest",
+      "x": 0,
+      "y": -44,
+      "rot": 0
+    },
+    {
+      "name": "hair_back",
+      "parent": "head",
+      "x": 0,
+      "y": 0,
+      "rot": 0
+    },
+    {
+      "name": "hair_front",
+      "parent": "head",
+      "x": 0,
+      "y": 0,
+      "rot": 0
+    },
+    {
+      "name": "hair1",
+      "parent": "head",
+      "x": 0,
+      "y": -81,
+      "rot": 0,
+      "length": 23
+    },
+    {
+      "name": "hair2",
+      "parent": "hair1",
+      "x": -24,
+      "y": 12,
+      "rot": 0,
+      "length": 20
+    },
+    {
+      "name": "coat_back",
+      "parent": "hip",
+      "x": -3,
+      "y": 0,
+      "rot": 0,
+      "length": 25
+    },
+    {
+      "name": "coat_left",
+      "parent": "hip",
+      "x": -5,
+      "y": 0,
+      "rot": 0,
+      "length": 28
+    },
+    {
+      "name": "coat_left_tip",
+      "parent": "coat_left",
+      "x": -23,
+      "y": 23,
+      "rot": 0,
+      "length": 24
+    },
+    {
+      "name": "coat_right",
+      "parent": "hip",
+      "x": 5,
+      "y": 0,
+      "rot": 0,
+      "length": 26
+    },
+    {
+      "name": "upperarmL",
+      "parent": "chest",
+      "x": -21,
+      "y": -28,
+      "rot": 60.01363056967068
+    },
+    {
+      "name": "forearmL",
+      "parent": "upperarmL",
+      "x": 0,
+      "y": 37,
+      "rot": -84.54552448419385
+    },
+    {
+      "name": "handL",
+      "parent": "forearmL",
+      "x": 0,
+      "y": 19,
+      "rot": 24.531893914523167
+    },
+    {
+      "name": "upperarmR",
+      "parent": "chest",
+      "x": 24,
+      "y": -23,
+      "rot": -85.40084106714197
+    },
+    {
+      "name": "forearmR",
+      "parent": "upperarmR",
+      "x": 0,
+      "y": 28,
+      "rot": -85.5806088343009
+    },
+    {
+      "name": "handR",
+      "parent": "forearmR",
+      "x": 0,
+      "y": 16,
+      "rot": 170.9814499014429
+    },
+    {
+      "name": "thighL",
+      "parent": "hip",
+      "x": -22,
+      "y": 21.996413480213857,
+      "rot": 40
+    },
+    {
+      "name": "shinL",
+      "parent": "thighL",
+      "x": -3,
+      "y": 29,
+      "rot": -10
+    },
+    {
+      "name": "footL",
+      "parent": "shinL",
+      "x": 0,
+      "y": 26,
+      "rot": -30
+    },
+    {
+      "name": "thighR",
+      "parent": "hip",
+      "x": 22,
+      "y": 14.37550972475303,
+      "rot": -36
+    },
+    {
+      "name": "shinR",
+      "parent": "thighR",
+      "x": 0,
+      "y": 29,
+      "rot": 33
+    },
+    {
+      "name": "footR",
+      "parent": "shinR",
+      "x": 0,
+      "y": 27,
+      "rot": 3
+    },
+    {
+      "name": "spear",
+      "parent": "chest",
+      "x": 6,
+      "y": -15,
+      "rot": -24,
+      "length": 258
+    },
+    {
+      "name": "tassel",
+      "parent": "spear",
+      "x": -115,
+      "y": 0,
+      "rot": 24,
+      "length": 26
+    },
+    {
+      "name": "tassel_tip",
+      "parent": "tassel",
+      "x": -18,
+      "y": 17,
+      "rot": 0,
+      "length": 20
+    }
+  ],
+  "slots": [
+    {
+      "name": "hair_back",
+      "bone": "hair_back",
+      "image": "parts/hair_back.png",
+      "pivot": [
+        0.5196850393700787,
+        0.9375
+      ],
+      "z": 0
+    },
+    {
+      "name": "coat_back",
+      "bone": "coat_back",
+      "image": "parts/coat_back.png",
+      "pivot": [
+        0.57,
+        0.08
+      ],
+      "z": 1
+    },
+    {
+      "name": "thighL",
+      "bone": "thighL",
+      "image": "parts/thighL.png",
+      "pivot": [
+        0.52,
+        0.11
+      ],
+      "z": 4
+    },
+    {
+      "name": "shinL",
+      "bone": "shinL",
+      "image": "parts/shinL.png",
+      "pivot": [
+        0.5,
+        0.22
+      ],
+      "z": 2
+    },
+    {
+      "name": "footL",
+      "bone": "footL",
+      "image": "parts/footL.png",
+      "pivot": [
+        0.43,
+        0.2
+      ],
+      "z": 4
+    },
+    {
+      "name": "thighR",
+      "bone": "thighR",
+      "image": "parts/thighR.png",
+      "pivot": [
+        0.52,
+        0.11
+      ],
+      "z": 7
+    },
+    {
+      "name": "shinR",
+      "bone": "shinR",
+      "image": "parts/shinR.png",
+      "pivot": [
+        0.5,
+        0.22
+      ],
+      "z": 5
+    },
+    {
+      "name": "footR",
+      "bone": "footR",
+      "image": "parts/footR.png",
+      "pivot": [
+        0.4,
+        0.2
+      ],
+      "z": 7
+    },
+    {
+      "name": "upperarmR",
+      "bone": "upperarmR",
+      "image": "parts/upperarmR.png",
+      "pivot": [
+        0.5,
+        0.19047619047619047
+      ],
+      "z": 8
+    },
+    {
+      "name": "forearmR",
+      "bone": "forearmR",
+      "image": "parts/forearmR.png",
+      "pivot": [
+        0.5,
+        0.14
+      ],
+      "z": 9
+    },
+    {
+      "name": "torso",
+      "bone": "breath",
+      "image": "parts/torso.png",
+      "pivot": [
+        0.51,
+        0.91
+      ],
+      "z": 10
+    },
+    {
+      "name": "coat_left",
+      "bone": "coat_left",
+      "image": "parts/coat_left.png",
+      "pivot": [
+        0.88,
+        0.08
+      ],
+      "z": 11
+    },
+    {
+      "name": "coat_right",
+      "bone": "coat_right",
+      "image": "parts/coat_right.png",
+      "pivot": [
+        0.11,
+        0.08
+      ],
+      "z": 12
+    },
+    {
+      "name": "head",
+      "bone": "head",
+      "image": "parts/head.png",
+      "pivot": [
+        0.5196850393700787,
+        0.9375
+      ],
+      "z": 13
+    },
+    {
+      "name": "hair1",
+      "bone": "hair1",
+      "image": "parts/hair1.png",
+      "pivot": [
+        0.5196850393700787,
+        0.21428571428571427
+      ],
+      "z": 14
+    },
+    {
+      "name": "hair2",
+      "bone": "hair2",
+      "image": "parts/hair2.png",
+      "pivot": [
+        0.65,
+        0.1
+      ],
+      "z": 14,
+      "alpha": 0
+    },
+    {
+      "name": "hair_front",
+      "bone": "hair_front",
+      "image": "parts/hair_front.png",
+      "pivot": [
+        0.5196850393700787,
+        0.9375
+      ],
+      "z": 15
+    },
+    {
+      "name": "upperarmL",
+      "bone": "upperarmL",
+      "image": "parts/upperarmL.png",
+      "pivot": [
+        0.5,
+        0.19047619047619047
+      ],
+      "z": 16
+    },
+    {
+      "name": "forearmL",
+      "bone": "forearmL",
+      "image": "parts/forearmL.png",
+      "pivot": [
+        0.5,
+        0.14
+      ],
+      "z": 17
+    },
+    {
+      "name": "sash",
+      "bone": "hip",
+      "image": "parts/sash.png",
+      "pivot": [
+        0.55,
+        0.12
+      ],
+      "z": 18
+    },
+    {
+      "name": "spear",
+      "bone": "spear",
+      "image": "parts/spear.png",
+      "pivot": [
+        0.46,
+        0.64
+      ],
+      "z": 19
+    },
+    {
+      "name": "tassel",
+      "bone": "tassel",
+      "image": "parts/tassel.png",
+      "pivot": [
+        0.9,
+        0.13
+      ],
+      "z": 20
+    },
+    {
+      "name": "handL",
+      "bone": "handL",
+      "image": "parts/handL.png",
+      "pivot": [
+        0.54,
+        0.5
+      ],
+      "z": 21
+    },
+    {
+      "name": "handR",
+      "bone": "handR",
+      "image": "parts/handR.png",
+      "pivot": [
+        0.48,
+        0.5
+      ],
+      "z": 22
+    }
+  ],
+  "springs": [
+    {
+      "bones": [
+        "hair1",
+        "hair2"
+      ],
+      "stiffness": 120,
+      "damping": 12,
+      "gravity": 0
+    },
+    {
+      "bones": [
+        "coat_left",
+        "coat_left_tip"
+      ],
+      "stiffness": 100,
+      "damping": 14,
+      "gravity": 0
+    },
+    {
+      "bones": [
+        "coat_right"
+      ],
+      "stiffness": 100,
+      "damping": 14,
+      "gravity": 0
+    },
+    {
+      "bones": [
+        "tassel",
+        "tassel_tip"
+      ],
+      "stiffness": 145,
+      "damping": 15,
+      "gravity": 0
+    }
+  ],
+  "sockets": {
+    "spearTip": {
+      "bone": "spear",
+      "x": 139.32,
+      "y": -7
+    },
+    "gripFront": {
+      "bone": "spear",
+      "x": 53,
+      "y": 0
+    },
+    "gripBack": {
+      "bone": "spear",
+      "x": -56,
+      "y": 0
+    }
+  },
+  "authoring": {
+    "keyMode": "additive (default)",
+    "source": "idle.png + Magpie reference cutout sheet",
+    "ik": "two-hand analytic IK baked into bone keyframes; runtime IK not required"
+  }
+}

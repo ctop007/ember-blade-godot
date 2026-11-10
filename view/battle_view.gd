@@ -24,6 +24,11 @@ var last_hit_ids: Array = []
 var charge_fx_t := 0.0
 var ghost_t := 0.0
 var fx_skill_fail: Array = []
+var rig_mode := "sprite"
+var last_game_time := 0.0
+var rig_sim_us := 0
+var rig_draw_us := 0
+var rig_parts := 0
 
 func setup(g: CoreGame, s: Sfx) -> void:
 	game = g
@@ -63,9 +68,13 @@ func setup(g: CoreGame, s: Sfx) -> void:
 	fx = Fx.new()
 	add_child(fx)
 	fx.setup(self, ground_fx, top_fx, nums)
-	hero = ActorView.new()
+	hero = ActorView.new() if rig_mode == "sprite" else RigActor.new()
 	hero.setup("hero", 0)
 	actors.add_child(hero)
+	if hero is RigActor:
+		if not hero.enable_rig(g.cfg, sfx, top_fx, rig_mode == "test"):
+			rig_mode = "sprite"
+	last_game_time = game.time
 	cam_x = g.player.x
 	_update_camera(0.0, true)
 
@@ -77,21 +86,35 @@ func cam_top() -> float:
 
 # ------------------------------------------------------------------ per frame
 func sync(dt: float) -> void:
-	var frozen := game.hitstop > 0.0
+	# Core time advances only on simulation steps that are not hit-stopped.
+	var animation_dt := maxf(0.0, game.time - last_game_time)
+	last_game_time = game.time
+	var frozen := animation_dt <= 0.0
+	rig_draw_us = RigPlayer.draw_us
+	rig_parts = RigPlayer.parts_drawn
+	RigPlayer.sim_us = 0
+	RigPlayer.draw_us = 0
+	RigPlayer.parts_drawn = 0
+	RigPlayer.eval_us = 0
+	RigPlayer.world_us = 0
+	RigPlayer.spring_us = 0
 	for ev in game.events:
 		_on_event(ev)
 	game.events.clear()
-	hero.sync(game.player, dt, false)
+	hero.sync(game.player, animation_dt, frozen)
 	var seen := {}
 	for e in game.enemies:
 		seen[e.id] = true
 		var av: ActorView = actor_views.get(e.id)
 		if av == null:
-			av = ActorView.new()
+			var has_enemy_rig := rig_mode == "hero" and FileAccess.file_exists("res://rigs/%s/rig.json" % e.type)
+			av = RigActor.new() if has_enemy_rig else ActorView.new()
 			av.setup(e.type, e.id)
 			actors.add_child(av)
+			if av is RigActor:
+				av.enable_rig(game.cfg, sfx, top_fx, false)
 			actor_views[e.id] = av
-		av.sync(e, dt, frozen)
+		av.sync(e, 0.0 if game.freeze > 0.0 else animation_dt, frozen or game.freeze > 0.0)
 		if frozen and last_hit_ids.has(e.id):
 			av.position += Vector2(randf_range(-3, 3), randf_range(-1.5, 1.5))
 	for id in actor_views.keys():
@@ -101,6 +124,7 @@ func sync(dt: float) -> void:
 			fx.clear_telegraph(id)
 	if not frozen:
 		last_hit_ids.clear()
+	rig_sim_us = RigPlayer.sim_us
 	# hazards follow core positions
 	for h in game.hazards:
 		var n: Node2D = hazard_nodes.get(h.id)
@@ -201,8 +225,9 @@ func _on_event(ev: Dictionary) -> void:
 		"swing":
 			var step := int(ev.step)
 			hero.kick(1.6 if step == 2 else 1.0, -1.0)
-			fx.swing(ev, step)
-			sfx.play("swing%d" % (step + 1), -3.0)
+			if rig_mode == "sprite":
+				fx.swing(ev, step)
+				sfx.play("swing%d" % (step + 1), -3.0)
 		"charge_ready":
 			fx.charge_ready(Vector2(ev.x, ev.y))
 			sfx.play("card_flip", -6.0, 0.0)

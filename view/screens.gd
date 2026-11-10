@@ -2,7 +2,7 @@ class_name Screens
 extends RefCounted
 ## Code-built screens: loading, home, QR modal, pause, result. All return a Control.
 
-const VERSION_DATE := "2026-11-08"
+const VERSION_DATE := "2026-11-09"
 
 static func label(text: String, fs: int, col: Color, outline := 6, oc := Color(0.08, 0.03, 0.03)) -> Label:
 	var l := Label.new()
@@ -192,7 +192,7 @@ static func home(sfx: Sfx, insets: Vector4, on_start: Callable, on_qr: Callable)
 	var note := label("本游戏由 AI 开发，当前为试玩版，欢迎加群提意见", 18, Color(1.0, 0.9, 0.8, 0.85), 4)
 	note.name = "Note"
 	holder.add_child(note)
-	var ver := label("v0.1.0 试玩版 · 更新于 %s" % VERSION_DATE, 16, Color(0.9, 0.8, 0.7, 0.7), 4)
+	var ver := label("v0.2.0 试玩版 · 更新于 %s" % VERSION_DATE, 16, Color(0.9, 0.8, 0.7, 0.7), 4)
 	ver.name = "Ver"
 	holder.add_child(ver)
 	var _v := vs

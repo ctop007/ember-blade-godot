@@ -3,7 +3,8 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 
-const URL = 'http://localhost:8941/index.html?debug';
+const rigArg = (process.argv.find(a => a.startsWith('--rig=')) || '').slice(6);
+const URL = 'http://localhost:8941/index.html?debug' + (rigArg ? '&rig=' + rigArg : '');
 const OUT = 'tools/shots';
 const args = process.argv.slice(2);
 const only = (args.find(a => a.startsWith('--only=')) || '').slice(7);
@@ -18,6 +19,11 @@ async function open(vw, vh, tag) {
     args: ['--use-angle=metal', '--enable-gpu', '--ignore-gpu-blocklist', '--autoplay-policy=no-user-gesture-required'] });
   const ctx = await browser.newContext({ viewport: { width: vw, height: vh }, hasTouch: true, isMobile: true, deviceScaleFactor: 2 });
   const page = await ctx.newPage();
+  await page.addInitScript(() => {
+    const raf = window.requestAnimationFrame.bind(window);
+    const ft = window.__ft = { buf: [], on: false };
+    window.requestAnimationFrame = cb => raf(ts => { const t0 = performance.now(); try { cb(ts); } finally { if (ft.on) ft.buf.push(performance.now() - t0); } });
+  });
   page.on('console', m => {
     const t = m.text();
     if (m.type() === 'error' || /SCRIPT ERROR|Parse Error/.test(t)) report.errors.push(`[${tag}] ${t}`);
@@ -240,10 +246,12 @@ async function fullRun(T, page, tag, budgetMs = 420000) {
 
 function checkLayout(s) {
   const L = s.layout, [vw, vh] = s.view, bad = [];
+  const k = 720 / vh;
   const ids = Object.keys(L);
   for (const id of ids) {
-    const [x, y, r] = L[id];
-    if (id !== 'joy' && (x - r < 0 || y - r < 0 || x + r > vw || y + r > vh)) bad.push(`${id} out of view`);
+    const [x, y, hitR, visR = hitR] = L[id];
+    if (id !== 'joy' && (x - visR < 0 || y - visR < 0 || x + visR > vw || y + visR > vh)) bad.push(`${id} out of view`);
+    if (id !== 'joy' && hitR / k < 22 - 0.1) bad.push(`${id} hitR ${hitR / k} < 22 CSS px`);
   }
   for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) {
     const a = L[ids[i]], b = L[ids[j]];
@@ -252,14 +260,51 @@ function checkLayout(s) {
   return bad;
 }
 
+async function checkPauseAndSecondFinger(T, page, tag) {
+  const s0 = await T.st();
+  const atk = s0.layout.attack;
+  const f1 = await T.down(atk[0], atk[1]);
+  const f2 = await T.down(atk[0] + 4, atk[1] + 4);
+  await sleep(60);
+  await T.up(f2);
+  await sleep(360);
+  const heldAfterSecondUp = (await T.st()).game.pstate;
+  await T.up(f1);
+  await sleep(300);
+  await T.btn('pause');
+  const sp = await T.waitFor(x => x && x.paused && x.resumeBtn, 4000, 'paused');
+  await shot(page, `${tag}-pause`);
+  await T.tap(sp.resumeBtn[0], sp.resumeBtn[1]);
+  const sr = await T.waitFor(x => x && !x.paused && x.screen === 'battle', 4000, 'resumed');
+  return { secondFingerIgnored: ['charge', 'attack', 'thrust'].includes(heldAfterSecondUp), pauseResume: !sr.paused && sr.game.wave === s0.game.wave };
+}
+
 async function perf(tag) {
   const { browser, page, cdp, T, loadMs } = await open(844, 390, tag);
-  const out = { loadMs };
+  const out = { loadMs, rig: rigArg || 'sprite' };
   await page.evaluate(() => window.__AI_BRIDGE__.start()); await T.waitFor(x => x && x.game, 5000, 'battle');
-  await page.evaluate(() => { const b = window.__AI_BRIDGE__; b.god(true); b.spawn('imp', 14); b.spawn('lantern', 4); b.spawn('brute', 2); });
+  await page.evaluate(() => { const b = window.__AI_BRIDGE__; b.god(true); b.clearEnemies(); b.spawn('imp', 14); b.spawn('lantern', 4); b.spawn('brute', 2); });
   await sleep(1500);
+  const keep = async n => { const s = await T.st(); if (s.game.enemies.length < n) await page.evaluate(k => window.__AI_BRIDGE__.spawn('imp', k), n - s.game.enemies.length); return s; };
+  // sustained combat with 20 alive, hero attacking continuously (real touch): main-thread ms per frame
+  const msStats = a => { const s = [...a].sort((x, y) => x - y); const q = k => s[Math.min(s.length - 1, Math.floor(s.length * k))];
+    return { avg: +(a.reduce((x, y) => x + y, 0) / a.length).toFixed(2), p50: +q(0.5).toFixed(2), p95: +q(0.95).toFixed(2), n: a.length }; };
+  for (const rate of [1, 4, 6]) {
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate });
+    await sleep(1200);
+    await page.evaluate(() => { window.__ft.buf = []; window.__ft.on = true; });
+    const fps = [], alive = [];
+    for (let i = 0; i < 50; i++) {
+      const s = await keep(20); fps.push(s.fps); alive.push(s.game.enemies.length);
+      if (i % 2 === 0) await T.btn('attack', 40);
+      await sleep(100);
+    }
+    const ft = await page.evaluate(() => { window.__ft.on = false; return window.__ft.buf; });
+    out[`combat20_${rate}x`] = { ms: msStats(ft), fpsAvg: +(fps.reduce((a, b) => a + b, 0) / fps.length).toFixed(1),
+      alive: Math.round(alive.reduce((a, b) => a + b, 0) / alive.length) };
+  }
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
-  await sleep(1500);
+  await sleep(1200);
   const base = (await T.st()).fps;
   const fps = [];
   await page.evaluate(() => window.__AI_BRIDGE__.cast('ult'));
@@ -288,6 +333,7 @@ async function perf(tag) {
       log('full run', JSON.stringify(full));
       const st = await T.st();
       full.layoutIssues = checkLayout(st);
+      full.uiChecks = await checkPauseAndSecondFinger(T, page, 'p844');
       full.mechanics = await mechanics(T, page, 'p844');
       log('mechanics', JSON.stringify(full.mechanics));
       report.runs.p844 = full;
@@ -304,7 +350,7 @@ async function perf(tag) {
     }
     if (!only || only === 'perf') { report.perf = await perf('perf'); log('perf', JSON.stringify(report.perf)); }
   } catch (e) { report.fatal = String(e.stack || e); console.error(e); }
-  fs.writeFileSync(`${OUT}/report.json`, JSON.stringify(report, null, 2));
+  fs.writeFileSync(`${OUT}/report${only ? '-' + only : ''}${rigArg ? '-' + rigArg : ''}.json`, JSON.stringify(report, null, 2));
   log('errors', report.errors.length, report.errors.slice(0, 10));
   log('DONE');
   process.exit(0);

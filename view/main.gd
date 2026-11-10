@@ -41,6 +41,9 @@ func _ready() -> void:
 		debug = str(JavaScriptBridge.eval("location.search")).contains("debug")
 		_install_bridge()
 		_read_insets()
+	elif OS.has_feature("android"):
+		_read_insets()
+		print("ANDROID_LAYOUT viewport=%s screen=%s scale=%.2f insets=%s K=%.3f" % [get_viewport().get_visible_rect().size, DisplayServer.screen_get_size(), DisplayServer.screen_get_scale(), insets, HudScale.factor()])
 	get_viewport().size_changed.connect(_read_insets)
 	loading = Screens.Loading.new()
 	ui.add_child(loading)
@@ -70,6 +73,18 @@ func _load_tick() -> void:
 	loading.progress = float(load_step) / float(total)
 	loading.tip = ["正在点燃余烬……", "磨砺长枪……", "唤醒森林……"][int(loading.progress * 2.99)]
 	if load_step >= total:
+		for rkind in ["hero", "imp", "lantern", "brute", "boss"]:
+			var rpath := "res://rigs/%s/rig.json" % rkind
+			if FileAccess.file_exists(rpath):
+				var apath := "res://rigs/%s/atlas.png" % rkind
+				if ResourceLoader.exists(apath):
+					load(apath)
+				else:
+					var hrig: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(rpath))
+					for s in hrig.get("slots", []):
+						var img := String(s.get("image", ""))
+						if img != "" and ResourceLoader.exists("res://rigs/%s/%s" % [rkind, img]):
+							load("res://rigs/%s/%s" % [rkind, img])
 		show_home()
 		if OS.get_cmdline_user_args().has("--autoplay"):
 			autoplay = Bot.new()
@@ -98,6 +113,11 @@ func start_battle() -> void:
 	_set_screen(null, "battle")
 	game = CoreGame.new(cfg, int(cfg.seed) + int(Time.get_unix_time_from_system()) % 100000)
 	battle = BattleView.new()
+	battle.rig_mode = "hero" if FileAccess.file_exists("res://rigs/hero/rig.json") else "sprite"
+	if is_web:
+		var mode := str(JavaScriptBridge.eval("new URLSearchParams(location.search).get('rig') || ''"))
+		if mode in ["sprite", "test", "hero"]:
+			battle.rig_mode = mode
 	world.add_child(battle)
 	battle.setup(game, sfx)
 	hud = Hud.new()
@@ -224,19 +244,19 @@ func _show_result() -> void:
 
 # ------------------------------------------------------------------ safe area
 func _read_insets() -> void:
-	var l := 16.0
-	var t := 12.0
-	var r := 16.0
-	var b := 10.0
+	var k := HudScale.factor()
+	var l := 12.0 * k
+	var t := 10.0 * k
+	var r := 12.0 * k
+	var b := 10.0 * k
 	if is_web:
-		var js := "(function(){var d=document.getElementById('__sa');if(!d){d=document.createElement('div');d.id='__sa';d.style.cssText='position:fixed;left:0;top:0;width:0;height:0;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);visibility:hidden;pointer-events:none';document.body.appendChild(d);}var s=getComputedStyle(d);return JSON.stringify([parseFloat(s.paddingLeft)||0,parseFloat(s.paddingTop)||0,parseFloat(s.paddingRight)||0,parseFloat(s.paddingBottom)||0,window.innerHeight]);})()"
+		var js := "(function(){var d=document.getElementById('__sa');if(!d){d=document.createElement('div');d.id='__sa';d.style.cssText='position:fixed;left:0;top:0;width:0;height:0;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);visibility:hidden;pointer-events:none';document.body.appendChild(d);}var s=getComputedStyle(d);return JSON.stringify([parseFloat(s.paddingLeft)||0,parseFloat(s.paddingTop)||0,parseFloat(s.paddingRight)||0,parseFloat(s.paddingBottom)||0]);})()"
 		var v: Variant = JSON.parse_string(str(JavaScriptBridge.eval(js)))
-		if v is Array and v.size() == 5 and float(v[4]) > 0.0:
-			var k := get_viewport().get_visible_rect().size.y / float(v[4])
-			l = maxf(l, float(v[0]) * k)
-			t = maxf(t, float(v[1]) * k)
-			r = maxf(r, float(v[2]) * k)
-			b = maxf(b, float(v[3]) * k)
+		if v is Array and v.size() == 4:
+			l = maxf(12.0, float(v[0])) * k
+			t = maxf(10.0, float(v[1])) * k
+			r = maxf(12.0, float(v[2])) * k
+			b = maxf(10.0, float(v[3])) * k
 	insets = Vector4(l, t, r, b)
 	if controls:
 		controls.insets = insets
@@ -256,7 +276,7 @@ func _install_bridge() -> void:
     state: function(){ return window.__jr.state ? window.__jr.state.game : null; },
     full: function(){ return window.__jr.state; },
     cast: q('cast'), spawn: q('spawn'), setWave: q('setWave'), draft: q('draft'),
-    timeScale: q('timeScale'), god: q('god'), pick: q('pick'), start: q('start'), pause: q('pause'),
+    timeScale: q('timeScale'), god: q('god'), pick: q('pick'), start: q('start'), pause: q('pause'), clearEnemies: q('clearEnemies'),
     toCss: function(x, y){ var c = document.querySelector('canvas'); var r = c.getBoundingClientRect(); var s = window.__jr.state;
       var lw = s ? s.view[0] : 1280, lh = s ? s.view[1] : 720; return [r.left + x * r.width / lw, r.top + y * r.height / lh]; }
   };
@@ -297,9 +317,21 @@ func _bridge_poll(dt: float) -> void:
 		var h := screen_node.get_child(1)
 		var sb: Control = h.get_node("Start")
 		st["startBtn"] = [sb.position.x + sb.size.x * 0.5, sb.position.y + sb.size.y * 0.5]
-	if pause_node and is_instance_valid(pause_node) and screen == "result":
-		var again: Control = pause_node.get_child(1).get_node("Again")
-		st["againBtn"] = [again.get_global_transform() * (again.size * 0.5)].map(func(v: Vector2) -> Array: return [v.x, v.y])[0]
+	if pause_node and is_instance_valid(pause_node):
+		if screen == "result":
+			var again: Control = pause_node.get_child(1).get_node("Again")
+			st["againBtn"] = [again.get_global_transform() * (again.size * 0.5)].map(func(v: Vector2) -> Array: return [v.x, v.y])[0]
+		elif paused:
+			var resume: Control = pause_node.get_child(1).get_node("B0")
+			st["resumeBtn"] = [resume.get_global_transform() * (resume.size * 0.5)].map(func(v: Vector2) -> Array: return [v.x, v.y])[0]
+	if battle:
+		st["rigMode"] = battle.rig_mode
+		st["rigSimUs"] = battle.rig_sim_us
+		st["rigDrawUs"] = battle.rig_draw_us
+		st["rigParts"] = battle.rig_parts
+		st["rigEvalUs"] = RigPlayer.eval_us
+		st["rigWorldUs"] = RigPlayer.world_us
+		st["rigSpringUs"] = RigPlayer.spring_us
 	JavaScriptBridge.eval("window.__jr.state = " + JSON.stringify(st) + ";")
 
 func _fps() -> float:
@@ -329,6 +361,13 @@ func _bridge_cmd(cmd: Array) -> void:
 			elif map.has(s):
 				game.player.state = "idle"
 				game.pctl.try_skill(map[s], true)
+		"clearEnemies":
+			for e in game.enemies:
+				e.state = "dead"
+				e.hp = 0
+			game.enemies.clear()
+			game.spawn_queue.clear()
+			game.phase = "benchmark"
 		"spawn":
 			game.debug_spawn(String(cmd[1]), int(cmd[2]) if cmd.size() > 2 else 1)
 		"setWave":

@@ -1,0 +1,611 @@
+{
+  "float": {
+    "duration": 1.6,
+    "loop": true,
+    "phases": {
+      "windup": 0,
+      "active": 0,
+      "recovery": 1.6
+    },
+    "bones": {
+      "body": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rot": -3,
+          "sx": 1,
+          "sy": 1
+        },
+        {
+          "t": 0.4,
+          "x": 5,
+          "y": -10,
+          "rot": 2,
+          "sx": 1.02,
+          "sy": 0.98,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 0.8,
+          "x": 0,
+          "y": -16,
+          "rot": 4,
+          "sx": 0.99,
+          "sy": 1.02,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.2,
+          "x": -5,
+          "y": -8,
+          "rot": -1,
+          "sx": 1.01,
+          "sy": 0.99,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.6,
+          "x": 0,
+          "y": 0,
+          "rot": -3,
+          "sx": 1,
+          "sy": 1,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.8,
+          "rot": -6,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.6,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armR": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.8,
+          "rot": 6,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.6,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "talisman1": [
+        {
+          "t": 0,
+          "rot": 8
+        },
+        {
+          "t": 0.8,
+          "rot": -10,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.6,
+          "rot": 8,
+          "ease": "sineInOut"
+        }
+      ],
+      "talisman2": [
+        {
+          "t": 0,
+          "rot": 12
+        },
+        {
+          "t": 0.8,
+          "rot": -14,
+          "ease": "sineInOut"
+        },
+        {
+          "t": 1.6,
+          "rot": 12,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {},
+    "events": []
+  },
+  "windup": {
+    "duration": 0.5,
+    "loop": false,
+    "phases": {
+      "windup": 0.5,
+      "active": 0.5,
+      "recovery": 0.5
+    },
+    "bones": {
+      "body": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rot": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        {
+          "t": 0.35,
+          "x": -14,
+          "y": -14,
+          "rot": -18,
+          "sx": 1.06,
+          "sy": 0.95,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "x": -16,
+          "y": -16,
+          "rot": -22,
+          "sx": 1.08,
+          "sy": 0.94,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": 0,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "t": 0.35,
+          "rot": -28,
+          "x": -4,
+          "y": -8,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "rot": -34,
+          "x": -5,
+          "y": -10
+        }
+      ],
+      "armR": [
+        {
+          "t": 0,
+          "rot": 0,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "t": 0.35,
+          "rot": -24,
+          "x": -4,
+          "y": -8,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "rot": -30,
+          "x": -5,
+          "y": -10
+        }
+      ],
+      "stone": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.35,
+          "x": -8,
+          "y": -10,
+          "rot": -20,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "x": -10,
+          "y": -12,
+          "rot": -25
+        }
+      ],
+      "talisman1": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.35,
+          "rot": 22,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.5,
+          "rot": 26
+        }
+      ]
+    },
+    "slots": {},
+    "events": [
+      {
+        "t": 0.08,
+        "name": "windup_glow"
+      }
+    ]
+  },
+  "throw": {
+    "duration": 0.42,
+    "loop": false,
+    "phases": {
+      "windup": 0.05,
+      "active": 0.1,
+      "recovery": 0.42
+    },
+    "bones": {
+      "body": [
+        {
+          "t": 0,
+          "x": -16,
+          "y": -16,
+          "rot": -22
+        },
+        {
+          "t": 0.05,
+          "x": -18,
+          "y": -18,
+          "rot": -25,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.1,
+          "x": 18,
+          "y": 4,
+          "rot": 20,
+          "sx": 0.95,
+          "sy": 1.06,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.18,
+          "x": 16,
+          "y": 4,
+          "rot": 18,
+          "sx": 1,
+          "sy": 1
+        },
+        {
+          "t": 0.42,
+          "x": 0,
+          "y": 0,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armL": [
+        {
+          "t": 0,
+          "rot": -34,
+          "x": -5,
+          "y": -10
+        },
+        {
+          "t": 0.1,
+          "rot": 38,
+          "x": 10,
+          "y": 2,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.18,
+          "rot": 34,
+          "x": 8,
+          "y": 2
+        },
+        {
+          "t": 0.42,
+          "rot": 0,
+          "x": 0,
+          "y": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "armR": [
+        {
+          "t": 0,
+          "rot": -30,
+          "x": -5,
+          "y": -10
+        },
+        {
+          "t": 0.1,
+          "rot": 35,
+          "x": 8,
+          "y": 2,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.18,
+          "rot": 32,
+          "x": 6,
+          "y": 2
+        },
+        {
+          "t": 0.42,
+          "rot": 0,
+          "x": 0,
+          "y": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "stone": [
+        {
+          "t": 0,
+          "x": -10,
+          "y": -12,
+          "rot": -25
+        },
+        {
+          "t": 0.1,
+          "x": 28,
+          "y": -6,
+          "rot": 45,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.32,
+          "x": 0,
+          "y": 0,
+          "rot": 0
+        }
+      ],
+      "talisman1": [
+        {
+          "t": 0,
+          "rot": 26
+        },
+        {
+          "t": 0.1,
+          "rot": -35,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.42,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {
+      "stone": [
+        {
+          "t": 0,
+          "alpha": 1
+        },
+        {
+          "t": 0.1,
+          "alpha": 0
+        },
+        {
+          "t": 0.32,
+          "alpha": 0
+        },
+        {
+          "t": 0.4,
+          "alpha": 1
+        }
+      ]
+    },
+    "events": [
+      {
+        "t": 0.1,
+        "name": "hit"
+      },
+      {
+        "t": 0.1,
+        "name": "spawn_projectile"
+      }
+    ]
+  },
+  "hurt": {
+    "duration": 0.25,
+    "loop": false,
+    "phases": {
+      "windup": 0.03,
+      "active": 0.03,
+      "recovery": 0.25
+    },
+    "bones": {
+      "body": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.03,
+          "x": -16,
+          "y": -6,
+          "rot": -22,
+          "sx": 1.08,
+          "sy": 0.92,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.1,
+          "x": -12,
+          "y": -4,
+          "rot": -16,
+          "sx": 1,
+          "sy": 1
+        },
+        {
+          "t": 0.25,
+          "x": 0,
+          "y": 0,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "talisman1": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.05,
+          "rot": 34,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.25,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ],
+      "talisman2": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.06,
+          "rot": 28,
+          "ease": "expoOut"
+        },
+        {
+          "t": 0.25,
+          "rot": 0,
+          "ease": "sineInOut"
+        }
+      ]
+    },
+    "slots": {},
+    "events": [
+      {
+        "t": 0,
+        "name": "flash",
+        "arg": 0.08
+      }
+    ]
+  },
+  "dead": {
+    "duration": 0.7,
+    "loop": false,
+    "phases": {
+      "windup": 0.1,
+      "active": 0.35,
+      "recovery": 0.7
+    },
+    "bones": {
+      "body": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.1,
+          "x": -8,
+          "y": -10,
+          "rot": -18,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.38,
+          "x": -14,
+          "y": 68,
+          "rot": -78,
+          "sx": 1.08,
+          "sy": 0.88,
+          "ease": "quadIn"
+        },
+        {
+          "t": 0.48,
+          "x": -16,
+          "y": 60,
+          "rot": -84,
+          "sx": 0.98,
+          "sy": 1.02,
+          "ease": "quadOut"
+        },
+        {
+          "t": 0.7,
+          "x": -16,
+          "y": 68,
+          "rot": -82,
+          "sx": 1,
+          "sy": 0.94,
+          "ease": "sineInOut"
+        }
+      ],
+      "stone": [
+        {
+          "t": 0,
+          "x": 0,
+          "y": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.38,
+          "x": 28,
+          "y": 18,
+          "rot": 65,
+          "ease": "quadIn"
+        },
+        {
+          "t": 0.7,
+          "x": 34,
+          "y": 22,
+          "rot": 80
+        }
+      ],
+      "talisman1": [
+        {
+          "t": 0,
+          "rot": 0
+        },
+        {
+          "t": 0.38,
+          "rot": 55,
+          "ease": "quadIn"
+        },
+        {
+          "t": 0.7,
+          "rot": 68
+        }
+      ]
+    },
+    "slots": {
+      "flame": [
+        {
+          "t": 0,
+          "alpha": 1
+        },
+        {
+          "t": 0.35,
+          "alpha": 0.15
+        },
+        {
+          "t": 0.7,
+          "alpha": 0
+        }
+      ]
+    },
+    "events": []
+  }
+}

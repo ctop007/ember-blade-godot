@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "unitsPerPixel": 1,
+  "displayScale": 0.6,
+  "bones": [
+    {
+      "name": "root",
+      "parent": null,
+      "x": 0,
+      "y": 0,
+      "rot": 0
+    },
+    {
+      "name": "body",
+      "parent": "root",
+      "x": 2,
+      "y": -116,
+      "rot": 0
+    },
+    {
+      "name": "flame",
+      "parent": "body",
+      "x": -2,
+      "y": -62,
+      "rot": 0,
+      "length": 38
+    },
+    {
+      "name": "flame_tip",
+      "parent": "flame",
+      "x": -12,
+      "y": -34,
+      "rot": 0,
+      "length": 24
+    },
+    {
+      "name": "talisman1",
+      "parent": "body",
+      "x": 5,
+      "y": 60,
+      "rot": 0,
+      "length": 27
+    },
+    {
+      "name": "talisman2",
+      "parent": "talisman1",
+      "x": -3,
+      "y": 27,
+      "rot": 0,
+      "length": 28
+    },
+    {
+      "name": "talisman_tip",
+      "parent": "talisman2",
+      "x": -6,
+      "y": 26,
+      "rot": 0,
+      "length": 20
+    },
+    {
+      "name": "armL",
+      "parent": "body",
+      "x": -22,
+      "y": 22,
+      "rot": 0
+    },
+    {
+      "name": "armR",
+      "parent": "body",
+      "x": 40,
+      "y": 26,
+      "rot": 0
+    },
+    {
+      "name": "stone",
+      "parent": "body",
+      "x": 18,
+      "y": 44,
+      "rot": 0
+    }
+  ],
+  "slots": [
+    {
+      "name": "talisman2",
+      "bone": "talisman2",
+      "image": "parts/talisman2.png",
+      "pivot": [
+        0.575,
+        0.15789
+      ],
+      "z": 1
+    },
+    {
+      "name": "talisman1",
+      "bone": "talisman1",
+      "image": "parts/talisman1.png",
+      "pivot": [
+        0.51163,
+        0.11429
+      ],
+      "z": 2
+    },
+    {
+      "name": "armR",
+      "bone": "armR",
+      "image": "parts/armR.png",
+      "pivot": [
+        0.40909,
+        0.23404
+      ],
+      "z": 3
+    },
+    {
+      "name": "body",
+      "bone": "body",
+      "image": "parts/body.png",
+      "pivot": [
+        0.49505,
+        0.58197
+      ],
+      "z": 4
+    },
+    {
+      "name": "flame",
+      "bone": "flame",
+      "image": "parts/flame.png",
+      "pivot": [
+        0.5,
+        0.7931
+      ],
+      "z": 5
+    },
+    {
+      "name": "stone",
+      "bone": "stone",
+      "image": "parts/stone.png",
+      "pivot": [
+        0.48148,
+        0.52083
+      ],
+      "z": 6
+    },
+    {
+      "name": "armL",
+      "bone": "armL",
+      "image": "parts/armL.png",
+      "pivot": [
+        0.34,
+        0.24074
+      ],
+      "z": 7
+    }
+  ],
+  "springs": [
+    {
+      "bones": [
+        "talisman1",
+        "talisman2",
+        "talisman_tip"
+      ],
+      "stiffness": 110,
+      "damping": 10,
+      "gravity": 25
+    },
+    {
+      "bones": [
+        "flame",
+        "flame_tip"
+      ],
+      "stiffness": 130,
+      "damping": 12,
+      "gravity": -15
+    }
+  ],
+  "sockets": {
+    "projectileOrigin": {
+      "bone": "stone",
+      "x": 0,
+      "y": 0
+    }
+  }
+}

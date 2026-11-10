@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "unitsPerPixel": 1,
+  "displayScale": 0.6,
+  "bones": [
+    {
+      "name": "root",
+      "parent": null,
+      "x": 0,
+      "y": 0,
+      "rot": 0
+    },
+    {
+      "name": "hip",
+      "parent": "root",
+      "x": 36,
+      "y": -197,
+      "rot": 0
+    },
+    {
+      "name": "chest",
+      "parent": "hip",
+      "x": 0,
+      "y": 0,
+      "rot": 0
+    },
+    {
+      "name": "head",
+      "parent": "chest",
+      "x": 10,
+      "y": -116,
+      "rot": 0
+    },
+    {
+      "name": "plume",
+      "parent": "head",
+      "x": -40,
+      "y": -36,
+      "rot": 0,
+      "length": 65
+    },
+    {
+      "name": "plume_tip",
+      "parent": "plume",
+      "x": -55,
+      "y": -45,
+      "rot": 0,
+      "length": 45
+    },
+    {
+      "name": "cape1",
+      "parent": "chest",
+      "x": -51,
+      "y": -117,
+      "rot": 0,
+      "length": 142
+    },
+    {
+      "name": "cape2",
+      "parent": "cape1",
+      "x": -70,
+      "y": 123,
+      "rot": 0,
+      "length": 135
+    },
+    {
+      "name": "cape_tip",
+      "parent": "cape2",
+      "x": -55,
+      "y": 125,
+      "rot": 0,
+      "length": 80
+    },
+    {
+      "name": "armR",
+      "parent": "chest",
+      "x": 56,
+      "y": -47,
+      "rot": 0
+    },
+    {
+      "name": "armL",
+      "parent": "chest",
+      "x": -48,
+      "y": -88,
+      "rot": 0
+    },
+    {
+      "name": "sword",
+      "parent": "armL",
+      "x": -26,
+      "y": 138,
+      "rot": 0,
+      "length": 240
+    },
+    {
+      "name": "legL",
+      "parent": "hip",
+      "x": -74,
+      "y": 40,
+      "rot": 0
+    },
+    {
+      "name": "legR",
+      "parent": "hip",
+      "x": 8,
+      "y": 44,
+      "rot": 0
+    }
+  ],
+  "slots": [
+    {
+      "name": "plume",
+      "bone": "plume",
+      "image": "parts/plume.png",
+      "pivot": [
+        0.81679,
+        0.81373
+      ],
+      "z": 0
+    },
+    {
+      "name": "cape2",
+      "bone": "cape2",
+      "image": "parts/cape2.png",
+      "pivot": [
+        0.79605,
+        0.09143
+      ],
+      "z": 1
+    },
+    {
+      "name": "cape1",
+      "bone": "cape1",
+      "image": "parts/cape1.png",
+      "pivot": [
+        0.88235,
+        0.25131
+      ],
+      "z": 2
+    },
+    {
+      "name": "armR",
+      "bone": "armR",
+      "image": "parts/armR.png",
+      "pivot": [
+        0.425,
+        0.16788
+      ],
+      "z": 3
+    },
+    {
+      "name": "legR",
+      "bone": "legR",
+      "image": "parts/legR.png",
+      "pivot": [
+        0.41053,
+        0.11628
+      ],
+      "z": 4
+    },
+    {
+      "name": "legL",
+      "bone": "legL",
+      "image": "parts/legL.png",
+      "pivot": [
+        0.55952,
+        0.10169
+      ],
+      "z": 5
+    },
+    {
+      "name": "torso",
+      "bone": "chest",
+      "image": "parts/torso.png",
+      "pivot": [
+        0.46269,
+        0.59361
+      ],
+      "z": 6
+    },
+    {
+      "name": "head",
+      "bone": "head",
+      "image": "parts/head.png",
+      "pivot": [
+        0.47222,
+        0.85
+      ],
+      "z": 7
+    },
+    {
+      "name": "sword",
+      "bone": "sword",
+      "image": "parts/sword.png",
+      "pivot": [
+        0.24382,
+        0.26344
+      ],
+      "z": 8
+    },
+    {
+      "name": "armL",
+      "bone": "armL",
+      "image": "parts/armL.png",
+      "pivot": [
+        0.51304,
+        0.21429
+      ],
+      "z": 9
+    }
+  ],
+  "springs": [
+    {
+      "bones": [
+        "cape1",
+        "cape2",
+        "cape_tip"
+      ],
+      "stiffness": 90,
+      "damping": 12,
+      "gravity": 15
+    },
+    {
+      "bones": [
+        "plume",
+        "plume_tip"
+      ],
+      "stiffness": 115,
+      "damping": 12,
+      "gravity": -15
+    }
+  ],
+  "sockets": {
+    "swordTip": {
+      "bone": "sword",
+      "x": 206,
+      "y": 126
+    }
+  }
+}

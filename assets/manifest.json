@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-08T22:52:40",
+ "updated": "2026-11-08T23:36:54",
  "root": "_shared/assets",
  "conventions": {
   "coords": "像素；anchor 为 [x,y] 归一化，(0,0)=左上",
@@ -1144,7 +1144,7 @@
    ],
    "use": "摇杆底盘（直径对应 180px 显示）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/joystick_knob.png",
@@ -1159,7 +1159,7 @@
    ],
    "use": "摇杆摇头",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/btn_attack.png",
@@ -1174,7 +1174,7 @@
    ],
    "use": "攻击大按钮（含长枪图案）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/btn_jump.png",
@@ -1189,7 +1189,7 @@
    ],
    "use": "跳跃按钮",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/btn_dodge.png",
@@ -1204,7 +1204,7 @@
    ],
    "use": "闪避按钮",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/btn_frame.png",
@@ -1219,7 +1219,7 @@
    ],
    "use": "技能按钮外框（圆形，图标放内部，冷却遮罩由代码画）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/icon_skill1.png",
@@ -1234,7 +1234,7 @@
    ],
    "use": "技能1 炎月斩 图标",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/icon_skill2.png",
@@ -1249,7 +1249,7 @@
    ],
    "use": "技能2 天穹落光 图标",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/icon_skill3.png",
@@ -1264,7 +1264,7 @@
    ],
    "use": "技能3 流星枪 图标",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/icon_ult.png",
@@ -1279,7 +1279,7 @@
    ],
    "use": "大招 烬灭·星陨 图标",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/btn_ult_frame.png",
@@ -1294,7 +1294,7 @@
    ],
    "use": "大招按钮外框（满怒气时代码加发光）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/btn_pause.png",
@@ -1309,7 +1309,7 @@
    ],
    "use": "暂停按钮",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/avatar.png",
@@ -1324,7 +1324,7 @@
    ],
    "use": "左上头像（主角 Q 版头像，圆形）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/bar_frame.png",
@@ -1339,7 +1339,7 @@
    ],
    "use": "HP/MP 条外框（九宫格：左右各 24px 不拉伸）",
    "nineSlice": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/bar_fill.png",
@@ -1354,7 +1354,7 @@
    ],
    "use": "条填充（白色，代码染红/蓝，九宫格同上）",
    "nineSlice": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/card_common.png",
@@ -1369,7 +1369,7 @@
    ],
    "use": "三选一卡框 普通（蓝灰）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/card_rare.png",
@@ -1384,7 +1384,7 @@
    ],
    "use": "三选一卡框 稀有（紫）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/card_epic.png",
@@ -1399,7 +1399,7 @@
    ],
    "use": "三选一卡框 史诗（金橙）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/card_back.png",
@@ -1414,7 +1414,7 @@
    ],
    "use": "卡背",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/logo.png",
@@ -1459,7 +1459,7 @@
    ],
    "use": "通用主按钮底（开始/再来一局，九宫格左右 48px）",
    "nineSlice": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/panel.png",
@@ -1474,7 +1474,7 @@
    ],
    "use": "通用面板底（暂停/结算/加群弹窗，九宫格四边 48px）",
    "nineSlice": true,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "ui/app-icon.png",
@@ -1504,7 +1504,7 @@
    ],
    "use": "Boss 登场标题卡底（叠「灰烬骑士」文字）",
    "nineSlice": false,
-   "status": "pending"
+   "status": "ready"
   },
   {
    "path": "audio/sfx/swing1",
